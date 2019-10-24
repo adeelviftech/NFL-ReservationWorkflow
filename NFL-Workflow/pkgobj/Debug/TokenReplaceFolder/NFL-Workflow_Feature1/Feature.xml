@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="SharePoint Add-in Feature" Id="ad3f1798-86f8-48bb-ac7e-46859b03f13a" Scope="Web" Title="NFL-Workflow Feature1" Version="1.0.0.0">
+  <ElementManifests>
+    <ElementManifest Location="Pages\Elements.xml" />
+    <ElementFile Location="Pages\Default.aspx" />
+    <ElementFile Location="Pages\Home.aspx" />
+    <ElementFile Location="Pages\VisitRequest.aspx" />
+    <ElementFile Location="Pages\AccommodationRequests.aspx" />
+    <ElementFile Location="Pages\CorporateEvent.aspx" />
+    <ElementManifest Location="Scripts\Elements.xml" />
+    <ElementFile Location="Scripts\App.js" />
+    <ElementFile Location="Scripts\jquery-1.9.1.min.map" />
+    <ElementFile Location="Scripts\jquery-1.9.1.min.js" />
+    <ElementFile Location="Scripts\jquery-1.9.1.js" />
+    <ElementFile Location="Scripts\jquery-1.9.1.intellisense.js" />
+    <ElementFile Location="Scripts\Custom.js" />
+    <ElementFile Location="Scripts\VisitRequest.js" />
+    <ElementManifest Location="Content\Elements.xml" />
+    <ElementFile Location="Content\App.css" />
+    <ElementManifest Location="Images\Elements.xml" />
+    <ElementFile Location="Images\AppIcon.png" />
+    <ElementManifest Location="MasterPage\Elements.xml" />
+    <ElementFile Location="MasterPage\Sample.txt" />
+    <ElementFile Location="MasterPage\NFL_Master.master" />
+    <ElementManifest Location="assets\Elements.xml" />
+    <ElementFile Location="assets\Sample.txt" />
+    <ElementFile Location="assets\Images\bg-login.jpg" />
+    <ElementFile Location="assets\Images\building.png" />
+    <ElementFile Location="assets\Images\calendar.png" />
+    <ElementFile Location="assets\Images\cancelled.png" />
+    <ElementFile Location="assets\Images\complete.png" />
+    <ElementFile Location="assets\Images\icn-pswrd.png" />
+    <ElementFile Location="assets\Images\icn-user.png" />
+    <ElementFile Location="assets\Images\logo.png" />
+    <ElementFile Location="assets\Images\menu-button.svg" />
+    <ElementFile Location="assets\Images\notes-lines.png" />
+    <ElementFile Location="assets\Images\open.png" />
+    <ElementFile Location="assets\Images\pending.png" />
+    <ElementFile Location="assets\Images\right-arrows.png" />
+    <ElementFile Location="assets\Images\rights.png" />
+    <ElementFile Location="assets\Images\user-requests.png" />
+    <ElementFile Location="assets\Images\volume.png" />
+    <ElementFile Location="assets\css\bootstrap.css" />
+    <ElementFile Location="assets\css\bootstrap.min.css" />
+    <ElementFile Location="assets\css\custom.css" />
+    <ElementFile Location="assets\css\entypo.css" />
+    <ElementFile Location="assets\css\jquery-ui-1.10.3.custom.min.css" />
+    <ElementFile Location="assets\css\neon-core.css" />
+    <ElementFile Location="assets\css\neon-forms.css" />
+    <ElementFile Location="assets\css\neon-theme.css" />
+    <ElementFile Location="assets\js\bootstrap.js" />
+    <ElementFile Location="assets\js\joinable.js" />
+    <ElementFile Location="assets\js\jquery-1.11.3.min.js" />
+    <ElementFile Location="assets\js\neon-api.js" />
+    <ElementFile Location="assets\js\neon-custom.js" />
+    <ElementFile Location="assets\js\neon-demo.js" />
+    <ElementFile Location="assets\js\neon-skins.js" />
+    <ElementFile Location="assets\js\resizeable.js" />
+    <ElementFile Location="assets\js\TweenMax.min.js" />
+    <ElementFile Location="assets\Images\avatar.png" />
+    <ElementFile Location="assets\css\font-icons\entypo\css\entypo.css" />
+    <ElementFile Location="assets\css\font-icons\entypo\font\entypo8421.eot" />
+    <ElementFile Location="assets\css\font-icons\entypo\font\entypo8421.svg" />
+    <ElementFile Location="assets\css\font-icons\entypo\font\entypo8421.ttf" />
+    <ElementFile Location="assets\css\font-icons\entypo\font\entypo8421.woff" />
+    <ElementFile Location="assets\css\font-icons\font-awesome\css\font-awesome.min.css" />
+    <ElementFile Location="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.eot" />
+    <ElementFile Location="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.svg" />
+    <ElementFile Location="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.ttf" />
+    <ElementFile Location="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.woff" />
+    <ElementFile Location="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.woff2" />
+    <ElementFile Location="assets\css\font-icons\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <ElementFile Location="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.eot" />
+    <ElementFile Location="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.svg" />
+    <ElementFile Location="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.ttf" />
+    <ElementFile Location="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.woff" />
+    <ElementFile Location="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.woff2" />
+    <ElementFile Location="assets\css\font-icons\glyphicons\glyphicons-halflings-regulard41d.eot" />
+    <ElementFile Location="assets\js\jquery.min.js" />
+    <ElementFile Location="assets\js\bootstrap.bundle.min.js" />
+    <ElementFile Location="assets\css\jquery.toast.min.css" />
+    <ElementFile Location="assets\js\jquery.toast.min.js" />
+    <ElementFile Location="assets\css\bootstrap-datetimepicker.min.css" />
+    <ElementFile Location="assets\css\bootstrap-validator.min.css" />
+    <ElementFile Location="assets\css\bootstrap_limitless.min.css" />
+    <ElementFile Location="assets\js\blockui.min.js" />
+    <ElementFile Location="assets\js\bootstrap-datetimepicker.min.js" />
+    <ElementFile Location="assets\js\bootstrap-validator.min.js" />
+  </ElementManifests>
+  <UpgradeActions>
+    <VersionRange>
+      <ApplyElementManifests>
+        <ElementManifest Location="Pages\Elements.xml" />
+        <ElementManifest Location="Scripts\Elements.xml" />
+        <ElementManifest Location="Content\Elements.xml" />
+        <ElementManifest Location="Images\Elements.xml" />
+        <ElementManifest Location="MasterPage\Elements.xml" />
+        <ElementManifest Location="assets\Elements.xml" />
+      </ApplyElementManifests>
+    </VersionRange>
+  </UpgradeActions>
+</Feature>

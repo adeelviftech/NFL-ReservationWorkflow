@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="0d4dc364-bd9c-4e2b-9040-4f2df0eb5f3b" SharePointProductVersion="16.0">
+  <FeatureManifests>
+    <FeatureManifest Location="NFL-Workflow_Feature1\Feature.xml" />
+  </FeatureManifests>
+</Solution>

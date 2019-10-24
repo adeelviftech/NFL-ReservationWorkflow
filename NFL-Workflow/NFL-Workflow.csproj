@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBFE33A3-6D74-452F-A8C4-5A853C9DE82F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NFL_Workflow</RootNamespace>
+    <AssemblyName>NFL-Workflow</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>16.1</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <MinimumOfficeToolsVersion>12.2</MinimumOfficeToolsVersion>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+    <ProjectMode>SharePointApp</ProjectMode>
+    <AppFeaturePartId>{47d02e15-7f73-4912-af5b-bcd1dca45e60}</AppFeaturePartId>
+    <WspPartId>{e5b89b33-bd4e-4181-ba0f-dc43e68e150d}</WspPartId>
+    <WorkflowPartId>{6f23bcef-d6b1-4a50-89e6-536f831e2276}</WorkflowPartId>
+    <CspkgPartId>{de1bd317-d636-4566-a4f5-d242084335ee}</CspkgPartId>
+    <SqlPackagePartId>{11a19a5d-9c95-45f6-957d-302f64e5c763}</SqlPackagePartId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="assets\css\font-icons\entypo\font\entypo8421.eot" />
+    <None Include="assets\css\font-icons\entypo\font\entypo8421.ttf" />
+    <None Include="assets\css\font-icons\entypo\font\entypo8421.woff" />
+    <None Include="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.eot" />
+    <None Include="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.ttf" />
+    <None Include="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.woff" />
+    <None Include="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.woff2" />
+    <None Include="assets\css\font-icons\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <None Include="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.eot" />
+    <None Include="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.ttf" />
+    <None Include="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.woff" />
+    <None Include="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.woff2" />
+    <None Include="assets\css\font-icons\glyphicons\glyphicons-halflings-regulard41d.eot" />
+    <None Include="assets\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7e73c284-fdce-40f6-94ea-efc7c1d2b9b4}</SharePointProjectItemId>
+    </None>
+    <None Include="MasterPage\NFL_Master.master" />
+    <None Include="MasterPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{baf6336b-2a75-4970-bff5-77d5696248e4}</SharePointProjectItemId>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{92a2eda8-ba31-4f40-8dfd-710ea408d080}</SharePointProjectItemId>
+    </None>
+    <Content Include="assets\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="assets\css\bootstrap-validator.min.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\bootstrap_limitless.min.css" />
+    <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\entypo.css" />
+    <Content Include="assets\css\font-icons\entypo\css\entypo.css" />
+    <Content Include="assets\css\font-icons\entypo\font\entypo8421.svg" />
+    <Content Include="assets\css\font-icons\font-awesome\css\font-awesome.min.css" />
+    <Content Include="assets\css\font-icons\font-awesome\fonts\fontawesome-webfont93e3.svg" />
+    <Content Include="assets\css\font-icons\glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\css\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="assets\css\jquery.toast.min.css" />
+    <Content Include="assets\css\neon-core.css" />
+    <Content Include="assets\css\neon-forms.css" />
+    <Content Include="assets\css\neon-theme.css" />
+    <Content Include="assets\Elements.xml" />
+    <Content Include="assets\Images\avatar.png" />
+    <Content Include="assets\Images\bg-login.jpg" />
+    <Content Include="assets\Images\building.png" />
+    <Content Include="assets\Images\calendar.png" />
+    <Content Include="assets\Images\cancelled.png" />
+    <Content Include="assets\Images\complete.png" />
+    <Content Include="assets\Images\icn-pswrd.png" />
+    <Content Include="assets\Images\icn-user.png" />
+    <Content Include="assets\Images\logo.png" />
+    <Content Include="assets\Images\menu-button.svg" />
+    <Content Include="assets\Images\notes-lines.png" />
+    <Content Include="assets\Images\open.png" />
+    <Content Include="assets\Images\pending.png" />
+    <Content Include="assets\Images\right-arrows.png" />
+    <Content Include="assets\Images\rights.png" />
+    <Content Include="assets\Images\user-requests.png" />
+    <Content Include="assets\Images\volume.png" />
+    <Content Include="assets\js\blockui.min.js" />
+    <Content Include="assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="assets\js\bootstrap-validator.min.js" />
+    <Content Include="assets\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\joinable.js" />
+    <Content Include="assets\js\jquery-1.11.3.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jquery.toast.min.js" />
+    <Content Include="assets\js\neon-api.js" />
+    <Content Include="assets\js\neon-custom.js" />
+    <Content Include="assets\js\neon-demo.js" />
+    <Content Include="assets\js\neon-skins.js" />
+    <Content Include="assets\js\resizeable.js" />
+    <Content Include="assets\js\TweenMax.min.js" />
+    <Content Include="assets\Sample.txt" />
+    <Content Include="MasterPage\Elements.xml" />
+    <Content Include="MasterPage\Sample.txt" />
+    <Content Include="Pages\AccommodationRequests.aspx" />
+    <Content Include="Pages\CorporateEvent.aspx" />
+    <Content Include="Pages\Elements.xml" />
+    <Content Include="Pages\Default.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Scripts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{11a19a5d-9c95-45f6-957d-302f64e5c763}</SharePointProjectItemId>
+    </None>
+    <Content Include="Pages\Home.aspx" />
+    <Content Include="Pages\VisitRequest.aspx" />
+    <Content Include="Scripts\Custom.js" />
+    <Content Include="Scripts\Elements.xml" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\VisitRequest.js" />
+    <Content Include="Scripts\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{88f8eb9b-4bb0-4252-9b0a-472e84b7268a}</SharePointProjectItemId>
+    </None>
+    <Content Include="Content\Elements.xml" />
+    <Content Include="Content\App.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\AppIcon.png">
+      <OpcRelationship>manifest-icon</OpcRelationship>
+    </Content>
+    <Content Include="Images\Elements.xml" />
+    <None Include="Images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fda7568d-88dd-4691-83d0-392c979b1cab}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package\Package.package">
+      <PackageId>{0d4dc364-bd9c-4e2b-9040-4f2df0eb5f3b}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Features\Feature1\Feature1.feature">
+      <FeatureId>{ad3f1798-86f8-48bb-ac7e-46859b03f13a}</FeatureId>
+    </None>
+    <None Include="Features\Feature1\Feature1.Template.xml">
+      <DependentUpon>Feature1.feature</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AppManifestFile Include="AppManifest.xml">
+      <SubType>Designer</SubType>
+    </AppManifestFile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

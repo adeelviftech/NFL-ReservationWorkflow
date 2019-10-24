@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="0d4dc364-bd9c-4e2b-9040-4f2df0eb5f3b" 
+        solutionId="0d4dc364-bd9c-4e2b-9040-4f2df0eb5f3b" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="NFL_Workflow"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="ad3f1798-86f8-48bb-ac7e-46859b03f13a" />
+  </features>
+</package>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Pages">
+    <File Path="Pages\Default.aspx" Url="Pages/Default.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\Home.aspx" Url="Pages/Home.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\VisitRequest.aspx" Url="Pages/VisitRequest.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\AccommodationRequests.aspx" Url="Pages/AccommodationRequests.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\CorporateEvent.aspx" Url="Pages/CorporateEvent.aspx" ReplaceContent="TRUE" />
+  </Module>
+  <Module Name="MasterPage">
+    <File Path="MasterPage\NFL_Master.master" Url="MasterPage/NFL_Master.master" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

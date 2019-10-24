@@ -1,0 +1,237 @@
+﻿<%@ Master language="C#"%>
+<%@ Register TagPrefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Register TagPrefix="Utilities" Namespace="Microsoft.SharePoint.Utilities" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Import Namespace="Microsoft.SharePoint" %>
+<%@ Assembly Name="Microsoft.Web.CommandUI, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Import Namespace="Microsoft.SharePoint.ApplicationPages" %>
+<%@ Register TagPrefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en">
+
+    <head>
+
+     <meta charset="utf-8" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="GENERATOR" content="Microsoft SharePoint" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Expires" content="0" />
+    <SharePoint:ScriptLink name="sp.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
+    <link rel="icon" href="assets/images/favicon.ico" />
+   
+   
+
+    <asp:ContentPlaceHolder ID="PlaceHolderAdditionalPageHead" runat="server">
+
+    <link href="../assets/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" />
+    <link href="../assets/css/entypo.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" id="style-resource-3" />
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../assets/css/neon-core.css" rel="stylesheet" />
+    <link href="../assets/css/neon-theme.css" rel="stylesheet" />
+    <link href="../assets/css/neon-forms.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://demo.neontheme.com/assets/css/font-icons/font-awesome/css/font-awesome.min.css" id="style-resource" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
+
+     <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
+      
+     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
+
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+
+   
+    <script type="text/javascript" src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../assets/js/TweenMax.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../assets/js/joinable.js"></script>
+    <script type="text/javascript" src="../assets/js/resizeable.js"></script>
+    <script type="text/javascript" src="../assets/js/neon-api.js"></script>
+    <script type="text/javascript" src="../assets/js/neon-custom.js"></script> <!-- Demo Settings -->
+    <script type="text/javascript" src="../assets/js/neon-demo.js"></script>
+<%--    <script type="text/javascript" src="../assets/js/neon-skins.js"></script>--%>
+    <script type="text/javascript" src="../assets/js/jquery.toast.min.js"></script>
+    <link href="../assets/css/jquery.toast.min.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../assets/js/bootstrap-validator.min.js"></script>
+    <link href="../assets/css/bootstrap-validator.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://demo.neontheme.com/assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
+    <script type="text/javascript" src="https://demo.neontheme.com/assets/js/bootstrap-timepicker.min.js" id="script-resource-13"></script>
+
+
+        <%--Custom Script--%>
+    <script type="text/javascript" src="../Scripts/Custom.js"></script>
+    <script type="text/javascript" src="../Scripts/VisitRequest.js"></script>
+    </asp:ContentPlaceHolder>
+
+
+    </head>
+
+    <body>
+         <asp:ContentPlaceHolder ID="SPNavigation" runat="server">
+            <div class="">
+                    <!-- Profile Info and Notifications -->
+                    <div class="col-md-12 col-sm-12 clearfix bg-white">
+                        <ul class="user-info pull-right pull-none-xsm cstm-user">
+                            <!-- Profile Info -->
+                            <li class="profile-info dropdown">
+                                <!-- add class "pull-right" if you want to place this from right --> 
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                     <img src="../assets/Images/avatar.png" alt="" class="img-circle" width="44" style="display: inline-block;">
+                                    <span id="USERNAME" style="display: inline-block;position: relative;top: 10px;">
+                                        <span>Welcome</span><br />Henderson</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- Reverse Caret -->
+                                    <li class="caret"></li> <!-- Profile sub-links -->
+                                    <li> <a href="index.html"> <i class="entypo-user"></i>
+                                            Logout
+                                        </a>
+
+                                    </li>
+                              
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+        </asp:ContentPlaceHolder>
+
+        <SharePoint:SharePointForm runat="server"></SharePoint:SharePointForm>
+       
+            
+              <div class="page-container">
+                   <div class="sidebar-menu">
+                <div class="sidebar-menu-inner">
+                    <header class="logo-env">
+                        <!-- logo -->
+                        <div class="logo">
+                            <a href="#">
+                             <img src="../assets/Images/logo.png" width="120" alt="">
+                                
+                              </a>
+
+                        </div> <!-- logo collapse icon -->
+                        <div class="sidebar-collapse">
+                            <a href="#" class="sidebar-collapse-icon">
+                                <!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="459px"
+                                    height="459px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;"
+                                    xml:space="preserve">
+                                    <g>
+                                        <g id="menu">
+                                            <path
+                                                d="M0,382.5h459v-51H0V382.5z M0,255h459v-51H0V255z M0,76.5v51h459v-51H0z" />
+                                        </g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                </svg> </a> </div>
+                        <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
+                        <div class="sidebar-mobile-menu visible-xs"> <a href="#" class="with-animation">
+                                <!-- add class "with-animation" to support animation --> <i class="entypo-menu"></i>
+                            </a>
+                        </div>
+                    </header>
+                    <ul id="main-menu" class="main-menu">
+                        <li class="root-level"> 
+
+                            <a href="javascript:;" _val="Home.aspx" class="ChangePage">
+                                <i class="entypo-home"></i>
+                                <span class="title">Home</span>
+
+                            </a> 
+
+                        </li>
+                        <li class="root-level">
+                           
+                             <a href="javascript:;" _val="VisitRequest.aspx" class="ChangePage">
+                                 <img src="../assets/Images/user-requests.png" alt="" class="user-requests" />
+                                 <span class="title">Visit Request</span>
+
+                             </a>
+
+                        </li>
+                        <li class="root-level">
+                           
+                             <a href="javascript:;" _val="AccommodationRequests.aspx" class="ChangePage">
+                                 <img src="../assets/Images/building.png" alt="" class="user-requests" />
+                                 <span class="title">Accommodation Requests</span>
+
+                             </a>
+
+                        </li>
+                        <li class="root-level">
+                            
+                             <a href="javascript:;" _val="CorporateEvent.aspx" class="ChangePage">
+                                 <img src="../assets/Images/calendar.png" alt="" class="user-requests" />
+                                 <span class="title">Corporate Event</span>
+
+                             </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+             
+           <asp:ContentPlaceHolder ID="PlaceHolderMainContent" runat="server">
+                <!-- Main content -->
+            <div class="content-wrapper">
+
+                <!-- Page header -->
+
+                <!-- /page header -->
+
+
+                <!-- Content area -->
+
+                <%--<p>this is page content</p>--%>
+
+
+                <!-- /content area -->
+
+
+            </div>
+            <!-- /main content -->
+            </asp:ContentPlaceHolder>
+         </div>
+        
+    </body>
+</html>
+
