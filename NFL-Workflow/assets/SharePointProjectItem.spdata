@@ -65,5 +65,8 @@
     <ProjectItemFile Source="js\blockui.min.js" Target="assets\js\" Type="ElementFile" />
     <ProjectItemFile Source="js\bootstrap-datetimepicker.min.js" Target="assets\js\" Type="ElementFile" />
     <ProjectItemFile Source="js\bootstrap-validator.min.js" Target="assets\js\" Type="ElementFile" />
+    <ProjectItemFile Source="js\daterangepicker.js" Target="assets\js\" Type="ElementFile" />
+    <ProjectItemFile Source="js\moment.min.js" Target="assets\js\" Type="ElementFile" />
+    <ProjectItemFile Source="Images\rolling.gif" Target="assets\Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

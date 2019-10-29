@@ -61,13 +61,18 @@
 
     <script type="text/javascript" src="../assets/js/bootstrap-validator.min.js"></script>
     <link href="../assets/css/bootstrap-validator.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="../assets/js/moment.min.js"></script>
+    <script type="text/javascript" src="../assets/js/daterangepicker.js"></script>
     <script type="text/javascript" src="https://demo.neontheme.com/assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
     <script type="text/javascript" src="https://demo.neontheme.com/assets/js/bootstrap-timepicker.min.js" id="script-resource-13"></script>
-
+      
 
         <%--Custom Script--%>
     <script type="text/javascript" src="../Scripts/Custom.js"></script>
     <script type="text/javascript" src="../Scripts/VisitRequest.js"></script>
+    <script type="text/javascript" src="../Scripts/CorporateEvent.js"></script>
+    <script type="text/javascript" src="../Scripts/VisitRequestApproval.js"></script>
+
     </asp:ContentPlaceHolder>
 
 

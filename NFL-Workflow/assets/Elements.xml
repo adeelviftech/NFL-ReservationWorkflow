@@ -64,5 +64,8 @@
     <File Path="assets\js\blockui.min.js" Url="assets/js/blockui.min.js" ReplaceContent="TRUE" />
     <File Path="assets\js\bootstrap-datetimepicker.min.js" Url="assets/js/bootstrap-datetimepicker.min.js" ReplaceContent="TRUE" />
     <File Path="assets\js\bootstrap-validator.min.js" Url="assets/js/bootstrap-validator.min.js" ReplaceContent="TRUE" />
+    <File Path="assets\js\daterangepicker.js" Url="assets/js/daterangepicker.js" ReplaceContent="TRUE" />
+    <File Path="assets\js\moment.min.js" Url="assets/js/moment.min.js" ReplaceContent="TRUE" />
+    <File Path="assets\Images\rolling.gif" Url="assets/Images/rolling.gif" ReplaceContent="TRUE" />
   </Module>
 </Elements>

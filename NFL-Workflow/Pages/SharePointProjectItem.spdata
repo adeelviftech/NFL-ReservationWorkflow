@@ -7,5 +7,6 @@
     <ProjectItemFile Source="VisitRequest.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="AccommodationRequests.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="CorporateEvent.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="VisitRequestApproval.aspx" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

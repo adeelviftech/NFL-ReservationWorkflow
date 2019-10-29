@@ -100,6 +100,7 @@
     <Content Include="assets\Images\pending.png" />
     <Content Include="assets\Images\right-arrows.png" />
     <Content Include="assets\Images\rights.png" />
+    <Content Include="assets\Images\rolling.gif" />
     <Content Include="assets\Images\user-requests.png" />
     <Content Include="assets\Images\volume.png" />
     <Content Include="assets\js\blockui.min.js" />
@@ -107,10 +108,12 @@
     <Content Include="assets\js\bootstrap-validator.min.js" />
     <Content Include="assets\js\bootstrap.bundle.min.js" />
     <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\daterangepicker.js" />
     <Content Include="assets\js\joinable.js" />
     <Content Include="assets\js\jquery-1.11.3.min.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\jquery.toast.min.js" />
+    <Content Include="assets\js\moment.min.js" />
     <Content Include="assets\js\neon-api.js" />
     <Content Include="assets\js\neon-custom.js" />
     <Content Include="assets\js\neon-demo.js" />
@@ -132,9 +135,12 @@
     </None>
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\VisitRequest.aspx" />
+    <Content Include="Pages\VisitRequestApproval.aspx" />
+    <Content Include="Scripts\CorporateEvent.js" />
     <Content Include="Scripts\Custom.js" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\VisitRequestApproval.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />

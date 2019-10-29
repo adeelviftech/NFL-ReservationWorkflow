@@ -85,8 +85,7 @@
                             <label class="control-label">Visit Date</label>
                             <div class="">
                                 <div class="input-groups">
-                                    <input placeholder="21-08-19" class="form-control daterange-single"
-                                         id="VisitDate" name="VisitDate" />
+                                    <input placeholder="21-08-19" class="form-control daterange-single" id="VisitDate" name="VisitDate" />
                                     <i class="entypo-calendar"></i>
                                 </div>
                             </div>
@@ -98,8 +97,7 @@
                             <label class="control-label">Card Return Date</label>
                             <div class="">
                                 <div class="input-groups">
-                                    <input type="text" placeholder="21-08-19" class="form-control daterange-single"
-                                         id="cardreturndate" name="cardreturndate" />
+                                    <input type="text" placeholder="21-08-19" class="form-control daterange-single" id="cardreturndate" name="cardreturndate" />
                                     <i class="entypo-calendar"></i>
                                 </div>
                             </div>
@@ -119,7 +117,7 @@
                         <thead class="bg-primary">
                             <tr>
                                 <th>Name</th>
-                                <th>Age<%--<strong style="color:red">*</strong>--%></th>
+                                <th>Age</th>
                                 <th>Relation</th>
                                 <th>Action</th>
                             </tr>
@@ -127,15 +125,15 @@
                         <tbody>
                             <tr class="tr_MedicalTable">
                                 <td>
-                                    <input type="text" class="Name form-control Name" placeholder="Enter Name" />
+                                    <input type="text" class="Name form-control" placeholder="Enter Name" />
                                     <span id="Nameerror" class="Name_error" style="color: red; font-size: 10px;"></span>
                                 </td>
                                 <td>
-                                    <input type="number" class="Age form-control Age" placeholder="Enter Age" />
+                                    <input type="number" class="Age form-control" placeholder="Enter Age" />
                                     <span id="Ageerror" class="Age_error" style="color: red; font-size: 10px;"></span>
                                 </td>
                                 <td>
-                                    <select class="Relation form-control relation" id="sel1">
+                                    <select class="Relation form-control" id="sel1">
                                         <option>Brother</option>
                                         <option>Sister</option>
                                         <option>Wife</option>
@@ -143,23 +141,34 @@
                                     <span id="Relationerror" class="Relation_error" style="color: red; font-size: 10px;"></span>
 
                                 </td>
-                                <td>
+                                <%-- <td>
                                     <button class="btn cstm-btn bg-danger DeleteRow" type="button" onclick="removeRow_New(this);">
                                         <i class="entypo-trash"></i>
                                     </button>
-                                </td>
+                                </td>--%>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Comments</label>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                </div>
 
-
-            <button class="btn cstm mt-20 addnewMedicalRow" id="clone"><i class="entypo-plus"></i>Add More</button>
-            <div class="text-right">
-                <button type="button" class="btn submit">Submit</button>
             </div>
 
+            <%--            <button class="btn cstm mt-20 addnewMedicalRow" id="clone"><i class="entypo-plus"></i>Add More</button>--%>
+            <div class="text-left">
+                <button type="button" class="btn submit">Approve</button>
+                <button type="button" class="btn submit">Reject</button>
+            </div>
+            <%--<div class="text-right">
+                <button type="button" class="btn submit">Submit</button>
+            </div>--%>
         </form>
 
 

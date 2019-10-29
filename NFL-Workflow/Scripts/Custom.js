@@ -4,6 +4,7 @@ var context;
 var user;
 var hostWebUrl;
 var appWebUrl;
+var weburl = "https://nflpk.sharepoint.com/sites/vfdev/NFL-Workflow";
 var itemCollection;
 var itemCollectionExpenseTypeID;
 var itemCollectionHistory;
@@ -27,6 +28,10 @@ var listItem;
 var DetaillistItem;
 var UserBusniess;
 var txtpcc;
+var txtrcpt;
+var Name;
+var Age;
+var Relation;
 var results = [];
 var BusniessHRApprover;
 var BusniessAdminManager;
@@ -215,4 +220,57 @@ function tblToJson(rows) {
 
     });
     return JsonArray;
+}
+
+function removeRow_New(currentrow) {
+
+    if ($('.DeleteRow').length > 1) {
+        $(currentrow).parent().parent().remove();
+        showStatusMsgPopup("1", "Row Removed !");
+
+    }
+    else {
+        showStatusMsgPopup("3", "Can't Removed !");
+    }
+}
+
+function ValidateFamilyMemberInfo() {
+
+    $('.Name').each(function (i, e) {
+        Name = $(e).val();
+        if (Name == '') {
+            $($('.Name_error')[i]).text('Required')
+        }
+        else {
+            $($('.Name_error')[i]).text('')
+        }
+    });
+
+    $('.Age').each(function (i, e) {
+        Age = $(e).val();
+        if (Age == '' || Age == '0') {
+            $($('.Age_error')[i]).text('Required')
+        }
+        else {
+            $($('.Age_error')[i]).text('')
+        }
+    });
+    $('.Relation').each(function (i, e) {
+        Relation = $(e).val();
+        if (Relation == '') {
+            $($('.Relation_error')[i]).text('Required')
+        }
+        else {
+            $($('.Relation_error')[i]).text('')
+        }
+    });
+}
+
+function BindDatePicker() {
+    $('.daterange-single').daterangepicker({
+        singleDatePicker: true,
+        locale: {
+            format: 'DD-MMM-YYYY'
+        }
+    });
 }

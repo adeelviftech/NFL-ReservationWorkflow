@@ -9,5 +9,7 @@
     <ProjectItemFile Source="jquery-1.9.1.intellisense.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="VisitRequest.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="CorporateEvent.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="VisitRequestApproval.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>
