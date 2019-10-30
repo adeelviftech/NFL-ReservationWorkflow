@@ -6,8 +6,9 @@ var hostWebUrl;
 var appWebUrl;
 var weburl = "https://nflpk.sharepoint.com/sites/vfdev/NFL-Workflow";
 var itemCollection;
-var itemCollectionExpenseTypeID;
-var itemCollectionHistory;
+var itemCollectionFamilyMemberList;
+var itemCollectionPrevioususer;
+var VisitorID = 68;
 var ApproveritemCollection;
 var SecretaryitemCollection;
 var AdminManageritemCollection;
@@ -17,6 +18,8 @@ var appCtxSite;
 var listEnumerator;
 var currentlist;
 var list;
+var GetVisitReqRecord;
+var GetUserInfo;
 var ExpenseTypeIDlist;
 var currentListItems;
 var HistoryListItems;
@@ -26,6 +29,7 @@ var siteUrl;
 var listCreationInformation;
 var listItem;
 var DetaillistItem;
+var HistoryListItem;
 var UserBusniess;
 var txtpcc;
 var txtrcpt;
@@ -40,6 +44,8 @@ var BusniessHOD;
 var BusniessHOD_ID;
 var masterid;
 var State;
+var ID;
+var PreviousUser;
 var CurrentStatus;
 var Pending = "Pending";
 var Approved = "Approved";
@@ -51,6 +57,8 @@ var AccommodationList = "Accommodation List";
 var AccommodationDetailList = "Accommodation Detail List";
 var CorporateEvent = "Corporate Event";
 var CorporateDetailList = "Corporate Detail List";
+var Users = "Users";
+var VisitRequestHistory = "Visit Request History";
 var Origin = location.origin;
 var PathName = "/sites/vfdev/NFL-Workflow/Pages/";
 var URL_Attr = "?" + document.URL.split("?")[1].split("&")[0] + "&" +
@@ -70,9 +78,11 @@ var UserDepartment = '';
 
 
 $(document).ready(function () {
+    
     $("#USERNAME").html(_spPageContextInfo.userDisplayName);
     ChangePage_Menu();
     $.getScript(scriptbase + "SP.js", getListItemFromHostWeb);
+    //GetBasicDetail(_spPageContextInfo.userLoginName.split("@")[0]);
 });
 
 function showStatusMsgPopup(MsgType, Msg) {
@@ -140,8 +150,8 @@ function showStatusMsgPopup(MsgType, Msg) {
 
 }
 
-
 function getListItemFromHostWeb() {
+    debugger;
     context = new SP.ClientContext.get_current();
     user = context.get_web().get_currentUser();
     hostWebUrl = decodeURIComponent(manageQueryStringParameter('SPHostUrl'));
@@ -154,7 +164,65 @@ function getListItemFromHostWeb() {
 
     ctx.load(lists);
     context.load(user);
+    if (pagename == "VisitRequestApproval.aspx") {
+        ctx.executeQueryAsync(GetVisitorDetail, OnGetListItemFailure);
+    }
+    if (pagename == "VisitRequest.aspx") {
+        ctx.executeQueryAsync(GetBasicDetail,onFailedCallback);
+    }
+}
 
+
+
+function GetBasicDetail() {
+    debugger;
+    var loginanme = _spPageContextInfo.userLoginName.split("@")[0];
+    list = lists.getByTitle(Users);
+    var camlQuery = new SP.CamlQuery();
+    camlQuery.set_viewXml("<View><Query>" +
+   "<Where>" +
+      "<Eq>" +
+         "<FieldRef Name='Ename' />" +
+         "<Value Type='Text'>" + loginanme + "</Value>" +
+      "</Eq>" +
+   "</Where>" +
+"</Query></View>");
+    GetUserInfo = list.getItems(camlQuery);
+    ctx.load(GetUserInfo);
+    //ctx.executeQueryAsync(Function.createDelegate(this, this.GetUserInfos), Function.createDelegate(this, this.onFailedCallback));
+    ctx.executeQueryAsync(GetUserInfos, onFailedCallback);
+
+}
+
+
+function GetUserInfos() {
+    debugger;
+    var enumerator = GetUserInfo.getEnumerator();
+    //Formulate HTML from the list items   
+    var MainResult = 'Items in the Divisions list: <br><br>';
+    //Loop through all the items   
+    while (enumerator.moveNext()) {
+        var listItem = enumerator.get_current();
+
+        $("#empid").val(listItem.get_item("EmpID")).prop('readonly', true);
+        $("#division").val(listItem.get_item("Division")).prop('readonly', true);
+        $("#empname").val(listItem.get_item("Ename")).prop('readonly', true);
+        $("#designation").val(listItem.get_item("Designation_Name")).prop('readonly', true);
+        $("#dept").val(listItem.get_item("Department")).prop('readonly', true);
+        $("#mobile").val(listItem.get_item("Cell")).prop('readonly', true);
+        $("#cost").val(listItem.get_item("Cost_Center")).prop('readonly', true);
+        $("#gps").val(listItem.get_item("GPS")).prop('readonly', true);
+
+    }
+    UnblockUI();
+}
+function onFailedCallback(sender, args) {
+    showStatusMsgPopup("3", args.get_message());
+}
+
+function OnGetListItemFailure(sender, args) {
+    //alert('Failed . Error:' + args.get_message());
+    showStatusMsgPopup("3", "Failed . Error:" +  args.get_message());
 }
 
 

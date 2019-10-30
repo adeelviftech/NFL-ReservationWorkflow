@@ -2,13 +2,15 @@
 
     if (pagename == "VisitRequest.aspx") {
         debugger;
-        //BlockUI();
+        BlockUI();
         AddNewFamilyMemberRow();
         ValidateFormVisitRequest();
         SaveVisitRequestForm();
         BindDatePicker();
-    }
+}
 });
+
+
 
 function SaveVisitRequestForm() {
     $('.submit').click(function () {
@@ -16,9 +18,10 @@ function SaveVisitRequestForm() {
         debugger;
         ValidateFamilyMemberInfo();
         $('.submit').submit()
-        var valid = $("#VisitRequestForm").data('bootstrapValidator');
+        //var valid = $("#VisitRequestForm").data('bootstrapValidator');
+        var Valid = $("#VisitRequestForm").data('bootstrapValidator');
         BlockUI();
-        if (valid.isValid() && Name != '' && Age != '')
+        if (Valid.isValid() && Name != '' && Age != '')
         {
             $.getScript(scriptbase + "SP.js", InsertItemToVisitRequestList);
             
@@ -30,6 +33,7 @@ function SaveVisitRequestForm() {
 
     });
 }
+
 function InsertItemToVisitRequestList() {
 
     var listTitle = VisitRequestList;
@@ -61,7 +65,7 @@ function InsertItemToVisitRequestList() {
     listItem.set_item('CardReturnDate', $("#cardreturndate").val());
     listItem.update();
     ctx.load(listItem);
-    ctx.executeQueryAsync(Function.createDelegate(this, FamilyMemberInformationSave), Function.createDelegate(this, AddListItemFailed));
+    ctx.executeQueryAsync(FamilyMemberInformationSave,AddListItemFailed);
 }
 
 function FamilyMemberInformationSave() {
@@ -99,7 +103,7 @@ function PageRedirectToHome()
 }
 
 var ValidateFormVisitRequest = function () {
-
+    debugger;
     if ($('#VisitRequestForm').length > 0) {
 
         $("#empid").focus();
@@ -186,7 +190,6 @@ var ValidateFormVisitRequest = function () {
     }
 }
 
-
 function AddListItemFailed(sender, args) {
     UnblockUI();
     showStatusMsgPopup("3", args.get_message());
@@ -200,3 +203,4 @@ function AddNewFamilyMemberRow() {
         showStatusMsgPopup("1", "Row Added !");
     });
 }
+

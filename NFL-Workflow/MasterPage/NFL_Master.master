@@ -70,8 +70,9 @@
         <%--Custom Script--%>
     <script type="text/javascript" src="../Scripts/Custom.js"></script>
     <script type="text/javascript" src="../Scripts/VisitRequest.js"></script>
-    <script type="text/javascript" src="../Scripts/CorporateEvent.js"></script>
     <script type="text/javascript" src="../Scripts/VisitRequestApproval.js"></script>
+    <script type="text/javascript" src="../Scripts/CorporateEvent.js"></script>
+    
 
     </asp:ContentPlaceHolder>
 

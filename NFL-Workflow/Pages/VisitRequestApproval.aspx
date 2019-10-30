@@ -5,7 +5,7 @@
 
 <asp:Content ContentPlaceHolderID="PlaceHolderMainContent" runat="server">
     <div class="main-area-wrapper">
-        <form id="VisitRequestForm">
+        
             <div class="row cstm-align">
                 <div class="col-md-12">
                     <p>Home<span><i class="entypo-right-open-mini"></i></span>Visit Request</p>
@@ -113,13 +113,12 @@
 
             <div class="main-form">
                 <div class="table-responsive cstm-table">
-                    <table class="table mbl_cstm_tbl_blck" id="MedicalTable">
+                    <table class="table mbl_cstm_tbl_blck" id="FamilyTable">
                         <thead class="bg-primary">
                             <tr>
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Relation</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -141,36 +140,94 @@
                                     <span id="Relationerror" class="Relation_error" style="color: red; font-size: 10px;"></span>
 
                                 </td>
-                                <%-- <td>
-                                    <button class="btn cstm-btn bg-danger DeleteRow" type="button" onclick="removeRow_New(this);">
-                                        <i class="entypo-trash"></i>
-                                    </button>
-                                </td>--%>
+                               
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Comments</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+
+            <h1>Admin Use Only</h1>
+        <form id="VisitRequestApprovalForm">
+            <div class="main-form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Card Handover Date</label>
+                            <div class="">
+                                <div class="input-groups">
+                                    <input type="text" placeholder="21-08-19" class="form-control daterange-single" id="cardhandoverdate" name="cardhandoverdate" />
+                                    <i class="entypo-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="">
+                                <div class="input-groups">
+                                    <input type="text" placeholder="21-08-19" class="form-control daterange-single" id="cardreturn" name="cardreturn" />
+                                    <i class="entypo-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Card Serial Number</label>
+                            <input type="text" class="form-control" placeholder="123456789" id="cardserial" name="cardserial" />
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Employee Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="employeename" name="employeename" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Employee Number</label>
+                            <input type="text" class="form-control" placeholder="Enter Employee Number" id="empnumber" name="empnumber" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Employee Email</label>
+                            <input type="text" class="form-control" placeholder="Enter Employee Email" id="empemail" name="empemail" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Contact No</label>
+                            <input type="text" class="form-control" placeholder="Enter Contact No" id="ContactNo" name="ContactNo" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Comments</label>
+                            <textarea cols="" class="form-control" rows="5" id="commentbox" name="commentbox"></textarea>
+                        </div>
+                    </div>
 
+                </div>
             </div>
 
-            <%--            <button class="btn cstm mt-20 addnewMedicalRow" id="clone"><i class="entypo-plus"></i>Add More</button>--%>
             <div class="text-left">
-                <button type="button" class="btn submit">Approve</button>
-                <button type="button" class="btn submit">Reject</button>
+                <button type="button" class="btn submitapproval">Approve</button>
+                <button type="button" class="btn reject">Reject</button>
+                <button type="button" class="btn sendback">Send Back To Initiator</button>
             </div>
-            <%--<div class="text-right">
-                <button type="button" class="btn submit">Submit</button>
-            </div>--%>
         </form>
-
-
+            
     </div>
 </asp:Content>

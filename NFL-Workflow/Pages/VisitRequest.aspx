@@ -53,7 +53,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Mobile Number</label>
-                            <input type="number" class="form-control" placeholder="+92 340 1807773" id="mobile" name="mobile" />
+                            <input type="text" class="form-control" placeholder="+92 340 1807773" id="mobile" name="mobile" />
                         </div>
                     </div>
                 </div>
