@@ -7,6 +7,7 @@
     <File Path="Pages\AccommodationRequests.aspx" Url="Pages/AccommodationRequests.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\CorporateEvent.aspx" Url="Pages/CorporateEvent.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\VisitRequestApproval.aspx" Url="Pages/VisitRequestApproval.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\VisitRequestView.aspx" Url="Pages/VisitRequestView.aspx" ReplaceContent="TRUE" />
   </Module>
   <Module Name="MasterPage">
     <File Path="MasterPage\NFL_Master.master" Url="MasterPage/NFL_Master.master" ReplaceContent="TRUE" />

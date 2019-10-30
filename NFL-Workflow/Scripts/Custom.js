@@ -8,7 +8,8 @@ var weburl = "https://nflpk.sharepoint.com/sites/vfdev/NFL-Workflow";
 var itemCollection;
 var itemCollectionFamilyMemberList;
 var itemCollectionPrevioususer;
-var VisitorID = 68;
+var VisitorID;
+var VisitReqViewForm;
 var ApproveritemCollection;
 var SecretaryitemCollection;
 var AdminManageritemCollection;
@@ -30,6 +31,7 @@ var listCreationInformation;
 var listItem;
 var DetaillistItem;
 var HistoryListItem;
+var HistoryItemsForReject;
 var UserBusniess;
 var txtpcc;
 var txtrcpt;
@@ -50,6 +52,7 @@ var CurrentStatus;
 var Pending = "Pending";
 var Approved = "Approved";
 var Rejected = "Rejected";
+var SentBack = "Sent Back To Initiator";
 var HomeView = "Home.aspx";
 var VisitRequestList = "Visit Request List";
 var VisitRequestFamilylist = "Visit Request Family Detail list";
@@ -169,6 +172,9 @@ function getListItemFromHostWeb() {
     }
     if (pagename == "VisitRequest.aspx") {
         ctx.executeQueryAsync(GetBasicDetail,onFailedCallback);
+    }
+    if (pagename == "VisitRequestView.aspx") {
+        ctx.executeQueryAsync(GetVisitorDetailView, onFailed);
     }
 }
 
@@ -341,4 +347,14 @@ function BindDatePicker() {
             format: 'DD-MMM-YYYY'
         }
     });
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }

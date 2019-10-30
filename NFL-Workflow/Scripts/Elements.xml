@@ -10,5 +10,7 @@
     <File Path="Scripts\VisitRequest.js" Url="Scripts/VisitRequest.js" ReplaceContent="TRUE" />
     <File Path="Scripts\CorporateEvent.js" Url="Scripts/CorporateEvent.js" ReplaceContent="TRUE" />
     <File Path="Scripts\VisitRequestApproval.js" Url="Scripts/VisitRequestApproval.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Home.js" Url="Scripts/Home.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\VisitRequestView.js" Url="Scripts/VisitRequestView.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

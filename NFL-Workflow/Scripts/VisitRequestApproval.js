@@ -15,7 +15,7 @@
 function GetVisitorDetail()
 {
     debugger;
-    
+    VisitorID = getParameterByName('ID');
     // Get the current context   
     list = lists.getByTitle(VisitRequestList);
     var camlQuery = new SP.CamlQuery();
@@ -68,7 +68,7 @@ function GetVisitorFamilyDetails() {
     debugger;
     
     // Get the current context   
-    
+    VisitorID = getParameterByName('ID');
     list = lists.getByTitle(VisitRequestFamilylist);
 
     var caml = new SP.CamlQuery();
@@ -124,7 +124,7 @@ function InsertApprovalItem() {
     ctx = new SP.ClientContext(appWebUrl);//Get the SharePoint Context object based upon the URL  
     appCtxSite = new SP.AppContextSite(ctx, hostWebUrl);
     web = appCtxSite.get_web(); //Get the Site   
-
+    VisitorID = getParameterByName('ID');
     lists = web.get_lists().getByTitle(VisitRequestList); //Get the List based upon the Title  
 
     listItem = lists.getItemById(VisitorID);
@@ -161,10 +161,7 @@ function InsertVisitRequestHistory() {
     ctx.executeQueryAsync(PageRedirectToHome, HistoryFailed);
 }
 
-function HistoryFailed() {
-    UnblockUI();
-    showStatusMsgPopup("3", args.get_message());
-}
+
 
 function RejectVisitRequest() {
     debugger;
@@ -184,7 +181,7 @@ function RejectRecord() {
     ctx = new SP.ClientContext(appWebUrl);//Get the SharePoint Context object based upon the URL  
     appCtxSite = new SP.AppContextSite(ctx, hostWebUrl);
     web = appCtxSite.get_web(); //Get the Site   
-
+    VisitorID = getParameterByName('ID');
     lists = web.get_lists().getByTitle(VisitRequestList); //Get the List based upon the Title  
 
     listItem = lists.getItemById(VisitorID);
@@ -194,7 +191,30 @@ function RejectRecord() {
     ctx.load(listItem);
     //Execute the batch Asynchronously 
     showStatusMsgPopup("4", "Visit Request Reject successfully");
-    ctx.executeQueryAsync(PageRedirectToHome, RejectVisitRequestFail);
+    ctx.executeQueryAsync(InsertVisitRequestRejectHistory, RejectVisitRequestFail);
+}
+
+function InsertVisitRequestRejectHistory() {
+
+    masterid = listItem.get_id();
+
+    lists = web.get_lists().getByTitle(VisitRequestHistory); //Get the List based upon the Title  
+    listCreationInformation = new SP.ListItemCreationInformation(); //Object for creating Item in the List  
+
+    HistoryItemsForReject = lists.addItem(listCreationInformation);
+    HistoryItemsForReject.set_item("VisitRequestID", masterid);
+    HistoryItemsForReject.set_item("RequestStatus", Rejected);
+    HistoryItemsForReject.set_item("RequestCommet", $("#commentbox").val());
+
+    HistoryItemsForReject.update(); //Update the List Item 
+    ctx.load(HistoryItemsForReject);
+    showStatusMsgPopup("1", "Visit Request Reject successfully");
+    ctx.executeQueryAsync(PageRedirectToHome, HistoryFailed);
+}
+
+function HistoryFailed() {
+    UnblockUI();
+    showStatusMsgPopup("3", args.get_message());
 }
 
 function SendBackToInitiatorReq() {
@@ -209,8 +229,8 @@ function SendBackToInitiatorReq() {
 
 function AssignedReqToInitiator() {
     
-    var VisitorID = 66;
     // Get the current context   
+    VisitorID = getParameterByName('ID');
     list = lists.getByTitle(VisitRequestList);
     var camlQuery = new SP.CamlQuery();
     camlQuery.set_viewXml("<View><Query>" +
@@ -234,7 +254,7 @@ function UpdateAssignedTo() {
     var MainResult = 'Items in the Divisions list: <br><br>';
     //Loop through all the items   
     while (enumerator.moveNext()) {
-        var listItem = enumerator.get_current();
+         listItem = enumerator.get_current();
         ID = listItem.get_item("ID");
         PreviousUser = listItem.get_item("Author");
 
@@ -251,10 +271,28 @@ function UpdateAssignedTo() {
         listItem.update(); //Update the List Item 
         ctx.load(listItem);
         showStatusMsgPopup("2", "Visit Request Sent Back To Initiator successfully");
-        ctx.executeQueryAsync(PageRedirectToHome, RejectVisitRequestFail);
+        ctx.executeQueryAsync(InsertVisitRequestSentBackHistory, RejectVisitRequestFail);
     }
         
 
+}
+
+function InsertVisitRequestSentBackHistory() {
+
+    masterid = listItem.get_id();
+
+    lists = web.get_lists().getByTitle(VisitRequestHistory); //Get the List based upon the Title  
+    listCreationInformation = new SP.ListItemCreationInformation(); //Object for creating Item in the List  
+
+    HistoryListItem = lists.addItem(listCreationInformation);
+    HistoryListItem.set_item("VisitRequestID", masterid);
+    HistoryListItem.set_item("RequestStatus", SentBack);
+    HistoryListItem.set_item("RequestCommet", $("#commentbox").val());
+
+    HistoryListItem.update(); //Update the List Item 
+    ctx.load(HistoryListItem);
+    showStatusMsgPopup("1", "Visit Request Sent Back To Initiator successfully");
+    ctx.executeQueryAsync(PageRedirectToHome, HistoryFailed);
 }
 
 var ValidateFormVisitApprovalRequest = function () {

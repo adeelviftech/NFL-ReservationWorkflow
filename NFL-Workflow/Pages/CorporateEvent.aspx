@@ -14,12 +14,12 @@
         <h1>Corporate Event</h1>
         <div class="main-form">
             <div class="row">
-                <div class="col-md-4">
+                <%-- <div class="col-md-4">
                     <div class="form-group">
                         <label>Request ID</label>
                         <input type="text" class="form-control" placeholder="VR-001" id="ReqID" />
                     </div>
-                </div>
+                </div>--%>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Employee ID</label>
@@ -299,7 +299,7 @@
                                 <input type="text" class="form-control" id="PlansDescription" placeholder="Add Description" />
                             </td>
                             <td>
-                                <button class="btn cstm-btn bg-danger DeleteRow" type="button">
+                                <button class="btn cstm-btn bg-danger DeleteRow" type="button" onclick="removeRow_New(this);">
                                     <i class="entypo-trash"></i>
                                 </button>
                             </td>
@@ -308,8 +308,8 @@
                 </table>
             </div>
         </div>
-         <button class="btn cstm mt-20 addnewMedicalRow" id="clone"><i class="entypo-plus"></i>Add More</button>
-<%--        <button class="btn cstm mt-20"><i class="entypo-plus"></i>Add More</button>--%>
+        <button class="btn cstm mt-20 addnewMedicalRow" id="clone"><i class="entypo-plus"></i>Add More</button>
+        <%--        <button class="btn cstm mt-20"><i class="entypo-plus"></i>Add More</button>--%>
         <div class="text-right">
             <button class="btn submit">Submit</button>
         </div>

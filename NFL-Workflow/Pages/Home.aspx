@@ -146,7 +146,7 @@
                         <div class="tab-pane fade active in" id="home-just" role="tabpanel"
                             aria-labelledby="home-tab-just">
                             <div class="table-responsive">
-                                <table class="table cstm-area">
+                                <table class="table cstm-area" id="table_custom">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.NO.</th>
@@ -159,7 +159,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                       <%-- <tr>
                                             <td>001</td>
                                             <td>Mohammad Salman</td>
                                             <td>Sales</td>
@@ -168,37 +168,7 @@
                                             <td>Pending</td>
                                             <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
                                                         data-target="#Visit_Requests"></i></span></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Visit_Requests"></i></span></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Visit_Requests"></i></span></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Visit_Requests"></i></span></a></td>
-                                        </tr>
+                                        </tr>--%>
                                     </tbody>
                                 </table>
                             </div>
