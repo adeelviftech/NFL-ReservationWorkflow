@@ -183,7 +183,12 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Employee Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Employee Name" id="employeename" name="employeename" />
+                           <%-- <input type="text" class="form-control" placeholder="Enter Employee Name" id="employeename" name="employeename" />--%>
+                            <select class="EMPNAME form-control empnames" id="EMPID" name="EMPNAME">
+                                        
+                                        
+                                        
+                                    </select>
                         </div>
                     </div>
                     <div class="col-md-4">

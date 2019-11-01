@@ -47,8 +47,11 @@ var BusniessHOD_ID;
 var masterid;
 var State;
 var ID;
+var GetEmployeeDropDown;
+var GetEmpInfo;
 var PreviousUser;
 var CurrentStatus;
+var GetSelectedDropdownvalueID;
 var Pending = "Pending";
 var Approved = "Approved";
 var Rejected = "Rejected";
@@ -169,6 +172,7 @@ function getListItemFromHostWeb() {
     context.load(user);
     if (pagename == "VisitRequestApproval.aspx") {
         ctx.executeQueryAsync(GetVisitorDetail, OnGetListItemFailure);
+        ctx.executeQueryAsync(BindEmployeeDropDown, OnGetListItemFailure);
     }
     if (pagename == "VisitRequest.aspx") {
         ctx.executeQueryAsync(GetBasicDetail,onFailedCallback);

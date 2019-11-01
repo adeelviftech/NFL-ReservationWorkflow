@@ -7,10 +7,84 @@
         SaveApprovalForm();
         RejectVisitRequest();
         SendBackToInitiatorReq();
+        GetEmployeeDetailAginstID();
         BindDatePicker();
     }
 });
 
+function BindEmployeeDropDown()
+{
+    list = lists.getByTitle(Users);
+    
+    var camlQuery = new SP.CamlQuery();
+    camlQuery.set_viewXml("<View><Query>" +
+   "<Where>" +
+      "<IsNotNull>" +
+         "<FieldRef Name='ID' />" +
+      "</IsNotNull>" +
+   "</Where>" +
+   "</Query></View>");
+    GetEmployeeDropDown = list.getItems(camlQuery);
+    ctx.load(GetEmployeeDropDown);
+    ctx.executeQueryAsync(onQuerySucceeded, onFailedCallback);
+
+}
+function onQuerySucceeded() {
+    var listItemEnumerator = GetEmployeeDropDown.getEnumerator();
+    $("#EMPID").append('<option>---Select Vendor---</option>')
+    while (listItemEnumerator.moveNext()) {
+        var oListItem = listItemEnumerator.get_current();
+        $("#EMPID").append('<option id="' + oListItem.get_item('ID') + '">' + oListItem.get_item('Ename') + '</option>')
+    }
+}
+function GetEmployeeDetailAginstID() {
+    $("#EMPID").on('change', function () {
+        debugger;
+        BlockUI();
+        GetSelectedDropdownvalueID = $("#EMPID option:selected").attr('id');
+        if (GetSelectedDropdownvalueID == undefined) {
+            $("#empnumber").val('').prop('readonly', false);
+            $("#empemail").val('').prop('readonly', false);
+            $("#ContactNo").val('').prop('readonly', false);
+            UnblockUI();
+        }
+        else {
+            list = lists.getByTitle(Users);
+            var camlQuery = new SP.CamlQuery();
+            camlQuery.set_viewXml("<View><Query>" +
+             "<Where>" +
+                "<Eq>" +
+                   "<FieldRef Name='ID' />" +
+                   "<Value Type='Counter'>" + GetSelectedDropdownvalueID + "</Value>" +
+                "</Eq>" +
+             "</Where>" +
+          "</Query></View>");
+
+            GetEmpInfo = list.getItems(camlQuery);
+            ctx.load(GetEmpInfo);
+            ctx.executeQueryAsync(FilledEmpInfo, onFailedCallback);
+        }
+        
+
+    });
+
+}
+
+function FilledEmpInfo() {
+
+    var enumerator = GetEmpInfo.getEnumerator();
+    //Formulate HTML from the list items   
+    var MainResult = 'Items in the Divisions list: <br><br>';
+    //Loop through all the items   
+    while (enumerator.moveNext()) {
+        var listItem = enumerator.get_current();
+
+        $("#empnumber").val(listItem.get_item("EmpID")).prop('readonly', true);
+        $("#empemail").val(listItem.get_item("Email")).prop('readonly', true);
+        $("#ContactNo").val(listItem.get_item("Cell")).prop('readonly', true);
+    }
+    UnblockUI();
+}
 
 function GetVisitorDetail()
 {
@@ -20,13 +94,13 @@ function GetVisitorDetail()
     list = lists.getByTitle(VisitRequestList);
     var camlQuery = new SP.CamlQuery();
     camlQuery.set_viewXml("<View><Query>" +
-   "<Where>" +
-      "<Eq>" +
-         "<FieldRef Name='ID' />" +
-         "<Value Type='Counter'>" + VisitorID +"</Value>" +
-      "</Eq>" +
-   "</Where>" +
-"</Query></View>");
+       "<Where>" +
+          "<Eq>" +
+             "<FieldRef Name='ID' />" +
+             "<Value Type='Counter'>" + VisitorID +"</Value>" +
+          "</Eq>" +
+       "</Where>" +
+    "</Query></View>");
     GetVisitReqRecord = list.getItems(camlQuery);
     ctx.load(GetVisitReqRecord);
     ctx.executeQueryAsync(onSucceededCallback, onFailedCallback);
