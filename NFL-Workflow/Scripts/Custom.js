@@ -50,6 +50,15 @@ var ID;
 var GetEmployeeDropDown;
 var GetEmpInfo;
 var PreviousUser;
+var PendingListItems;
+var OpenListItems;
+var CompletedListItems;
+var counterForPending = 0;
+var counterForOpen = 0;
+var counterForApprove = 0;
+var counterForReject = 0;
+var counterPendingListCounter = 0;
+var RejectListItems;
 var CurrentStatus;
 var GetSelectedDropdownvalueID;
 var Pending = "Pending";
@@ -176,6 +185,9 @@ function getListItemFromHostWeb() {
     }
     if (pagename == "VisitRequest.aspx") {
         ctx.executeQueryAsync(GetBasicDetail,onFailedCallback);
+    }
+    if (pagename == "AccommodationRequests.aspx") {
+        ctx.executeQueryAsync(GetBasicDetail, onFailedCallback);
     }
     if (pagename == "VisitRequestView.aspx") {
         ctx.executeQueryAsync(GetVisitorDetailView, onFailed);
@@ -361,4 +373,11 @@ function getParameterByName(name, url) {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function convertDateTime(DateTime) {
+    if (DateTime != null) {
+        var strDate = DateTime.getDate() + "-" + (DateTime.getMonth() + 1) + "-" + DateTime.getFullYear();
+        return strDate;
+    }
 }

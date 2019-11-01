@@ -21,14 +21,12 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="pending-img">
-                                            <a href="#"><img src="../assets/Images/pending.png">
-     
-                                            </a>
+                                            <a href="#"><img src="../assets/Images/pending.png"></a>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="Pending">
-                                            <h1>023</h1>
+                                            <h1 class="pendCount"></h1>
                                             <h5>Requests Pending</h5>
                                         </div>
                                     </div>
@@ -45,7 +43,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="Open">
-                                            <h1>012</h1>
+                                            <h1 class="openCount">45</h1>
                                             <h5>Open Requests </h5>
                                         </div>
                                     </div>
@@ -63,7 +61,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="Complete">
-                                            <h1>012</h1>
+                                            <h1 class="completeCount"></h1>
                                             <h5>Complete Requests </h5>
                                         </div>
                                     </div>
@@ -81,7 +79,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="Cancelled">
-                                            <h1>019</h1>
+                                            <h1 class="rejectcount"></h1>
                                             <h5>Cancelled Requests</h5>
                                         </div>
                                     </div>

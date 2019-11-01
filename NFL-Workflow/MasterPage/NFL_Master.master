@@ -74,6 +74,7 @@
     <script type="text/javascript" src="../Scripts/CorporateEvent.js"></script>
     <script type="text/javascript" src="../Scripts/Home.js"></script>
     <script type="text/javascript" src="../Scripts/VisitRequestView.js"></script>
+    <script type="text/javascript" src="../Scripts/AccommodationRequests.js"></script>
 
     </asp:ContentPlaceHolder>
 

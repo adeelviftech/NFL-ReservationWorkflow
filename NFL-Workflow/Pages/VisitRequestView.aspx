@@ -6,7 +6,7 @@
 <asp:Content ContentPlaceHolderId="PlaceHolderMainContent" runat="server">
     <SharePoint:ScriptLink name="sp.js" runat="server" OnDemand="true" LoadAfterUI="true" Localizable="false" />
     <div class="main-area-wrapper">
-        <form id="VisitRequestFormView">
+        
             <div class="row cstm-align">
                 <div class="col-md-12">
                     <p>Home<span><i class="entypo-right-open-mini"></i></span>Visit Request</p>
@@ -78,7 +78,7 @@
 
             <h1>Visit Information</h1>
 
-
+        <form id="VisitRequestFormView">
             <div class="main-form">
                 <div class="row">
                     <div class="col-md-4">
@@ -120,7 +120,7 @@
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Relation</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -142,7 +142,7 @@
                                     <span id="Relationerror" class="Relation_error" style="color: red; font-size: 10px;"></span>
 
                                 </td>
-                               
+
                             </tr>
                         </tbody>
                     </table>
@@ -155,10 +155,10 @@
                         <textarea class="form-control" rows="5" id="comment"></textarea>
                     </div>
                 </div>
-
             </div>
             <div class="text-left">
                 <button type="button" class="btn cancle">Cancel</button>
+                <button type="button" class="btn submitRequestView">Update</button>
             </div>
         </form>
 

@@ -16,69 +16,59 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Request ID</label>
-                                <input type="text" class="form-control" placeholder="AR-001" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
                                 <label>Employee ID</label>
-                                <input type="text" class="form-control" placeholder="Employee ID" />
+                                <input type="text" class="form-control" placeholder="Employee ID" id="empid" name="empid" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Name" />
+                                <input type="text" class="form-control" placeholder="Enter Name" id="empname" name="empname" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Division</label>
+                                <input type="text" class="form-control" placeholder="Enter Division" id="division" name="division" />
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
+                        
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Division</label>
-                                <input type="text" class="form-control" placeholder="Enter Division" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="sel1">Designation</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Manager</option>
-                                    <option>Suoervisor</option>
-                                </select>
+                                <label>Designation</label>
+                                <input type="text" class="form-control" placeholder="Enter Designation" id="designation" name="designation" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="sel1">Department</label>
-                                <select class="form-control" id="sel1" placeholder="Sale">
-                                    <option>Sale</option>
-                                    <option>Accounts</option>
-                                </select>
+                                <input type="text" class="form-control" placeholder="Enter Department" id="dept" name="dept" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>GPS</label>
+                                <input type="text" class="form-control" placeholder="Enter GPS" id="gps" name="gps" />
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>GPS</label>
-                                <input type="text" class="form-control" placeholder="Enter GPS" />
-                            </div>
-                        </div>
+                        
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Mobile Number</label>
-                                <input type="text" class="form-control" placeholder="Enter Mobile Number" />
+                                <input type="text" class="form-control" placeholder="+92 340 1807773" id="mobile" name="mobile" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Cost Centre Description</label>
-                                <input type="text" class="form-control" placeholder="Enter Cost Centre Description" />
+                                <label>Cost Center Description</label>
+                                <input type="text" class="form-control" placeholder="ABC" id="cost" name="cost" />
                             </div>
                         </div>
                     </div>
@@ -90,10 +80,11 @@
                         <div class="col-md-4">
                             <div class="form-group"> <label class="control-label">Visit Date</label>
                                 <div class="">
-                                    <div class="input-groups"> <input type="text" placeholder="21-october-2019" class="form-control datepicker"
-                                            data-format="dd-MM-yyyy" />
-                                        <i class="entypo-calendar"></i>
-                                    </div>
+                                    <div class="input-groups">
+                                    <input placeholder="21-08-19" class="form-control daterange-single"
+                                         id="VisitDateAcc" name="VisitDateAcc" />
+                                    <i class="entypo-calendar"></i>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -101,10 +92,11 @@
                         <div class="col-md-4">
                             <div class="form-group"> <label class="control-label">Card Return Date</label>
                                 <div class="">
-                                    <div class="input-groups"> <input type="text" placeholder="21-october-2019" class="form-control datepicker"
-                                            data-format="dd-MM-yyyy" />
-                                        <i class="entypo-calendar"></i>
-                                    </div>
+                                    <div class="input-groups">
+                                    <input type="text" placeholder="21-08-19" class="form-control daterange-single"
+                                         id="cardreturndateAcc" name="cardreturndateAcc" />
+                                    <i class="entypo-calendar"></i>
+                                </div>
                                 </div>
                             </div>
                         </div>
