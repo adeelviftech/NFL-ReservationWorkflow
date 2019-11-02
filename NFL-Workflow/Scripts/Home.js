@@ -1,14 +1,11 @@
 ﻿$(document).ready(function () {
     if (pagename == "Home.aspx") {
-        //GetVisitorDetailForHome();
-        //$.getScript(scriptbase + "SP.js", GetVisitorDetail);
-        //ExecuteOrDelayUntilScriptLoaded(GetVisitorDetail, "sp.js");
         $.getScript(scriptbase + "SP.js", GetVisitorDetailForHome);
         getPendingRequest();
         getOpenRequest();
         getCompletedRequest();
         getRejectRequest();
-
+        ExecuteOrDelayUntilScriptLoaded(GetCorporateDetailForHome, "sp.js");
     }
 });
 
@@ -22,13 +19,9 @@ function GetVisitorDetailForHome() {
     appWebUrl = decodeURIComponent(manageQueryStringParameter('SPAppWebUrl'));
     appWebUrl = appWebUrl.replace('#', '');
     var ctx = new SP.ClientContext(appWebUrl);
-
     appCtxSite = new SP.AppContextSite(ctx, hostWebUrl);
     web = appCtxSite.get_web();
-
     var aList = web.get_lists().getByTitle(ListName);
-
-
     var camlQuery = new SP.CamlQuery();
     camlQuery.set_viewXml("<View><Query>" +
    "<Where>" +
@@ -41,9 +34,7 @@ function GetVisitorDetailForHome() {
     HomeListItems = aList.getItems(camlQuery);
     ctx.load(HomeListItems);
     ctx.executeQueryAsync(onSucceededF, onFailedCallback);
-
 }
-
 
 function onSucceededF() {
     var enumerator = HomeListItems.getEnumerator();
@@ -65,38 +56,10 @@ function onSucceededF() {
         tem += '<a href="' + Origin + PathName + "VisitRequestView.aspx" + URL_Attr + "&ID=" + listItem.get_item("ID").toString() + '" title="Visit Request View"><i class="glyphicon glyphicon-eye-open"></i></span></a>';
         tem += '</td>';
         tem += '</tr>';
-
         $('#table_custom tbody').html(tem);
-        if (listItem.get_item("Status") == Pending) {
-            counterForPending++;
-        }
-        if (listItem.get_item("Status") == Approved) {
-            counterForApprove++;
-        }
-        if (listItem.get_item("Status") == Reject) {
-            counterForReject++;
-        }
-        //if (listItem.get_item("Status") == Pending) {
-        //    counterForPending++;
-        //}
-
     }
-    $('.pendCount').text(counterForPending);
-    $('.rejectcount').text(counterForReject);
-    $('.completeCount').text(counterForApprove);
-    // ExecuteOrDelayUntilScriptLoaded(GetVisitorFamilyDetails, "sp.js");
-    ctx.executeQueryAsync(onSucceededLoad_PCount, onFailedCallback_PCount);
-}
-//This function fires when the query fails   
-function onFailedCallback(sender, args) {
-    UnblockUI();
-    showStatusMsgPopup("3", args.get_message());
-}
-function convertDateTime(DateTime) {
-    var strDateTime = DateTime;
-    var myDate = new Date(strDateTime);
-    var CorrectFormat = myDate.toLocaleString();
-    return CorrectFormat;
+    $.getScript(scriptbase + "SP.js", onSucceededLoad_PCount);
+
 }
 
 function onSucceededLoad_PCount() {
@@ -108,13 +71,10 @@ function onSucceededLoad_PCount() {
     appWebUrl = decodeURIComponent(manageQueryStringParameter('SPAppWebUrl'));
     appWebUrl = appWebUrl.replace('#', '');
     var ctx = new SP.ClientContext(appWebUrl);
-
     appCtxSite = new SP.AppContextSite(ctx, hostWebUrl);
     web = appCtxSite.get_web();
-
     var aList = web.get_lists().getByTitle(ListName);
-
-
+    //Query for Pending Counts
     var camlQuery = new SP.CamlQuery();
     camlQuery.set_viewXml("<View><Query>" +
    "<Where>" +
@@ -130,23 +90,155 @@ function onSucceededLoad_PCount() {
        "</And>" +
    "</Where>" +
 "</Query></View>");
+    PendingListItemsCount = aList.getItems(camlQuery);
+    ctx.load(PendingListItemsCount);
 
-    PendingListItems = aList.getItems(camlQuery);
-    ctx.load(PendingListItems);
+    //Query for Open Counts
+    var camlQuery = new SP.CamlQuery();
+    camlQuery.set_viewXml("<View><Query>" +
+   "<Where>" +
+    "<And>" +
+      "<Eq>" +
+         "<FieldRef Name='Author' />" +
+         "<Value Type='User'>" + AssignName + "</Value>" +
+      "</Eq>" +
+      "<Eq>" +
+        "<FieldRef Name='Status' />" +
+         "<Value Type='Choice'>" + Pending + "</Value>" +
+       "</Eq>" +
+       "</And>" +
+   "</Where>" +
+"</Query></View>");
+    OpenListItemsCount = aList.getItems(camlQuery);
+    ctx.load(OpenListItemsCount);
+
+    var camlQuery = new SP.CamlQuery();
+    camlQuery.set_viewXml("<View><Query>" +
+   "<Where>" +
+    "<And>" +
+      "<Eq>" +
+         "<FieldRef Name='Author' />" +
+         "<Value Type='User'>" + AssignName + "</Value>" +
+      "</Eq>" +
+      "<Eq>" +
+        "<FieldRef Name='Status' />" +
+         "<Value Type='Choice'>" + Approved + "</Value>" +
+       "</Eq>" +
+       "</And>" +
+   "</Where>" +
+"</Query></View>");
+
+    ApprovedListItemsCount = aList.getItems(camlQuery);
+    ctx.load(ApprovedListItemsCount);
+
+    var camlQuery = new SP.CamlQuery();
+    camlQuery.set_viewXml("<View><Query>" +
+   "<Where>" +
+    "<And>" +
+      "<Eq>" +
+         "<FieldRef Name='Author' />" +
+         "<Value Type='User'>" + AssignName + "</Value>" +
+      "</Eq>" +
+      "<Eq>" +
+        "<FieldRef Name='Status' />" +
+         "<Value Type='Choice'>" + Rejected + "</Value>" +
+       "</Eq>" +
+       "</And>" +
+   "</Where>" +
+"</Query></View>");
+
+    RejectListItemsCount = aList.getItems(camlQuery);
+    ctx.load(RejectListItemsCount);
+
     ctx.executeQueryAsync(onSucceeded_CountPending, onFailedCallback_PCountx);
 }
 function onSucceeded_CountPending() {
-    var enumerator_New = PendingListItems.getEnumerator();
-    //var counterPendingList = 0;
-    counterForPending = enumerator_New.$2J_0;
-    UnblockUI();
+    var enumerator_PendingCount = PendingListItemsCount.getEnumerator();
+    var enumerator_OpenCount = OpenListItemsCount.getEnumerator();
+    var enumerator_apprvCount = ApprovedListItemsCount.getEnumerator();
+    var enumerator_rejectCount = RejectListItemsCount.getEnumerator();
+    counterForPending = enumerator_PendingCount.$2J_0;
+    counterForOpen = enumerator_OpenCount.$2J_0;
+    counterForApprove = enumerator_apprvCount.$2J_0;
+    counterForReject = enumerator_rejectCount.$2J_0;
+    $('.pendCount').text(counterForPending);
+    $('.openCount').text(counterForOpen);
+    $('.completeCount').text(counterForApprove);
+    $('.rejectcount').text(counterForReject);
     // ExecuteOrDelayUntilScriptLoaded(GetVisitorFamilyDetails, "sp.js");
 }
+var HomecorporateListItems;
+function GetCorporateDetailForHome() {
+    debugger;
+    var AssignName = _spPageContextInfo.userDisplayName;
+    // Get the current context   
+    var ListName = CorporateEvent;
+    hostWebUrl = decodeURIComponent(manageQueryStringParameter('SPHostUrl'));
+    appWebUrl = decodeURIComponent(manageQueryStringParameter('SPAppWebUrl'));
+    appWebUrl = appWebUrl.replace('#', '');
+    var ctx = new SP.ClientContext(appWebUrl);
+    appCtxSite = new SP.AppContextSite(ctx, hostWebUrl);
+    web = appCtxSite.get_web();
+    var CList = web.get_lists().getByTitle(ListName);
+    var camlQuery = new SP.CamlQuery();
+    camlQuery.set_viewXml("<View><Query>" +
+   "<Where>" +
+      "<Eq>" +
+         "<FieldRef Name='Assign' />" +
+         "<Value Type='User'>" + AssignName + "</Value>" +
+      "</Eq>" +
+   "</Where>" +
+"</Query></View>");
+    HomecorporateListItems = CList.getItems(camlQuery);
+    ctx.load(HomecorporateListItems);
+    ctx.executeQueryAsync(onSucceededCorporate, onFailedCallbackCorporate);
+}
+function onSucceededCorporate() {
+    var enumeratorCorporate = HomecorporateListItems.getEnumerator();
+    var counterAllList = 0;
+    while (enumeratorCorporate.moveNext()) {
+        var listItem1 = enumeratorCorporate.get_current();
+        var tem = $('#table_Corporate tbody').html();
+        counterAllList++;
+        debugger;
+        tem += '<tr>';
+        tem += '<td>' + "00" + counterAllList + "" + '</td>';
+        tem += '<td>' + listItem1.get_item("EmployeeName") + '</td>';
+        tem += '<td>' + listItem1.get_item("Department") + '</td>';
+        tem += '<td>' + listItem1.get_item("ID") + '</td>';
+        tem += '<td>' + convertDateTime(listItem1.get_item("Created")) + '</td>';
+        tem += '<td>' + listItem1.get_item("Status") + '</td>';
+        tem += '<td>';
+        tem += '<a href="' + Origin + PathName + "VisitRequestApproval.aspx" + URL_Attr + "&ID=" + listItem1.get_item("ID").toString() + '" title="Visit Request Approval"><i class="glyphicon glyphicon-eye-open"></i></span></a>';
+        tem += '<a href="' + Origin + PathName + "VisitRequestView.aspx" + URL_Attr + "&ID=" + listItem1.get_item("ID").toString() + '" title="Visit Request View"><i class="glyphicon glyphicon-eye-open"></i></span></a>';
+        tem += '</td>';
+        tem += '</tr>';
+        $('#table_Corporate tbody').html(tem);
+    }
+    // $.getScript(scriptbase + "SP.js", onSucceededLoad_PCount);
 
+}
+function onFailedCallbackCorporate(sender, args) {
+    UnblockUI();
+    showStatusMsgPopup("3", args.get_message());
+}
+
+//This function fires when the query fails   
+function onFailedCallback(sender, args) {
+    UnblockUI();
+    showStatusMsgPopup("3", args.get_message());
+}
 function onFailedCallback_PCountx(sender, args) {
     UnblockUI();
     showStatusMsgPopup("3", args.get_message());
 }
+function convertDateTime(DateTime) {
+    var strDateTime = DateTime;
+    var myDate = new Date(strDateTime);
+    var CorrectFormat = myDate.toLocaleString();
+    return CorrectFormat;
+}
+
 function onFailedCallback_PCount(sender, args) {
     UnblockUI();
     showStatusMsgPopup("3", args.get_message());

@@ -5,14 +5,15 @@
         BlockUI();
         AddNewFamilyMemberRow();
         ValidateFormVisitRequest();
-        SaveVisitRequestForm();
+        SaveVisitRequestFormReq();
         BindDatePicker();
+       
 }
 });
 
 
 
-function SaveVisitRequestForm() {
+function SaveVisitRequestFormReq() {
     $('.submit').click(function () {
         //block of code that runs when the click event triggers
         debugger;
@@ -21,13 +22,11 @@ function SaveVisitRequestForm() {
         //var valid = $("#VisitRequestForm").data('bootstrapValidator');
         var Valid = $("#VisitRequestForm").data('bootstrapValidator');
         BlockUI();
-        if (Valid.isValid() && Name != '' && Age != '')
-        {
+        if (Valid.isValid() && Name != '' && Age != '') {
             $.getScript(scriptbase + "SP.js", InsertItemToVisitRequestList);
-            
+
         }
-        else
-        {
+        else {
             UnblockUI();
         }
 

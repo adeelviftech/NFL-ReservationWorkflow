@@ -2,42 +2,44 @@
 
     if (pagename == "CorporateEvent.aspx") {
         debugger;
-        //BlockUI();
         addnewMedicalRow();
+        ValidateFormCorporateEvent();
+        SaveCorporateEventForm();
         BindDatePicker();
-        $('.submit').click(function () {
-            //block of code that runs when the click event triggers
-            $.getScript(scriptbase + "SP.js", AddListItem);
-        });
-
     }
 });
-
+function SaveCorporateEventForm() {
+    debugger;
+    $('.submit').click(function () {
+        debugger;
+        ValidateDayplandetails();
+        $('.submit').submit()
+        var Valid = $("#CorporateEventForm").data('bootstrapValidator');
+        BlockUI();
+        if (Valid.isValid()) {
+            $.getScript(scriptbase + "SP.js", AddListItem);
+        }
+        else {
+            UnblockUI();
+        }
+    });
+}
 function AddListItem() {
     debugger;
 
     var listTitle = CorporateEvent;
-    //Get the current client context  
-    //context = SP.ClientContext.get_current();
-
     hostWebUrl = decodeURIComponent(manageQueryStringParameter('SPHostUrl'));
     appWebUrl = decodeURIComponent(manageQueryStringParameter('SPAppWebUrl'));
-
+    appWebUrl = appWebUrl.replace('#', '');
     ctx = new SP.ClientContext(appWebUrl);//Get the SharePoint Context object based upon the URL  
     appCtxSite = new SP.AppContextSite(ctx, hostWebUrl);
     web = appCtxSite.get_web(); //Get the Site   
-
-
     var airportList = web.get_lists().getByTitle(listTitle);
     //Create a new record  
     var listItemCreationInformation = new SP.ListItemCreationInformation();
     listItem = airportList.addItem(listItemCreationInformation);
-
-
     var d = new Date();
     var strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
-
-    //listItem.set_item('RequestID', $("#ReqID").val());
     listItem.set_item('EmployeeID', $("#EmpID").val());
     listItem.set_item('Division', $("#Division").val());
     listItem.set_item('EmployeeName', $("#Name").val());
@@ -52,17 +54,11 @@ function AddListItem() {
     listItem.set_item('DateTo', $("#Dateto").val());
     listItem.set_item('Timeduration', $("#TimeDuration").val());
     listItem.set_item('NumberofChalet', $("#Accommdationtype1").val());
-    //listItem.set_item('NumberofChalet', $("#Accommdationtype2").val());
     listItem.set_item('MeetingRoomRequired', $("#meetingRoom1").val());
-    //listItem.set_item('MeetingRoomRequired', $("#meetingRoom2").val());
     listItem.set_item('NumberofCabana', $("#numofCabana").val());
     listItem.set_item('MeetingRoom', $("#numofmeetingRoomReq").val());
-    //listItem.set_item('CreatedBy', _spPageContextInfo.userDisplayName);
-    //listItem.set_item('CreatedDate', strDate);
     listItem.update();
     ctx.load(listItem);
-    //ctx.executeQueryAsync(FamilyMemberInformationSave, AddListItemFailed);
-
     ctx.executeQueryAsync(Function.createDelegate(this, CorporateDetailListSave), Function.createDelegate(this, AddListItemFailed)
    );
 }
@@ -113,4 +109,100 @@ function addnewMedicalRow() {
     });
 }
 
+var ValidateFormCorporateEvent = function () {
+    debugger;
+    if ($('#CorporateEventForm').length > 0) {
 
+        $("#NameOfEvent").focus();
+
+        $('#CorporateEventForm').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                NameOfEvent: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        }
+                    }
+                },
+                NumberofAttendees: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        }
+                    }
+                },
+                Datefrom: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        }
+                    }
+                },
+                Dateto: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        }
+                    }
+                },
+                TimeDuration: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        }
+                    }
+                },
+                numofCabana: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        }
+                    }
+                },
+                numofmeetingRoomReq: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Required'
+                        }
+                    }
+                },
+            }
+        });
+    }
+}
+function ValidateDayplandetails() {
+
+    //$('.plansdate').each(function (i, e) {
+    //    Name = $(e).val();
+    //    if (Name == '') {
+    //        $($('.Name_error')[i]).text('Required')
+    //    }
+    //    else {
+    //        $($('.Name_error')[i]).text('')
+    //    }
+    //});
+
+    //$('.planstime').each(function (i, e) {
+    //    Age = $(e).val();
+    //    if (Age == '' || Age == '0') {
+    //        $($('.Date_error')[i]).text('Required')
+    //    }
+    //    else {
+    //        $($('.Date_error')[i]).text('')
+    //    }
+    //});
+    $('.PlansDescription').each(function (i, e) {
+        Relation = $(e).val();
+        if (Relation == '') {
+            $($('.Description_error')[i]).text('Required')
+        }
+        else {
+            $($('.Description_error')[i]).text('')
+        }
+    });
+}

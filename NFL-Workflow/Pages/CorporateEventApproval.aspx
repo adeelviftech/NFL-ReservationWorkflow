@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" MasterPageFile="../MasterPage/NFL_Master.master" Inherits="Microsoft.SharePoint.WebPartPages.WebPartPage, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-<%@ Register TagPrefix="Utilities" Namespace="Microsoft.SharePoint.Utilities" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-<%@ Register TagPrefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-<%@ Register TagPrefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+﻿<%@ Page language="C#" MasterPageFile="../MasterPage/NFL_Master.master" Inherits="Microsoft.SharePoint.WebPartPages.WebPartPage, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Register Tagprefix="Utilities" Namespace="Microsoft.SharePoint.Utilities" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 
 <asp:Content ContentPlaceHolderID="PlaceHolderMainContent" runat="server">
+    <script type="text/javascript" src="../Scripts/CorporateEventApproval.js"></script>
     <div class="main-area-wrapper">
             <form id="CorporateEventForm">
         <div class="row cstm-align">
@@ -300,22 +301,22 @@
                                 <input type="text" class="form-control PlansDescription" id="PlansDescription" placeholder="Add Description" />
                             <span id="Descriptionerror" class="Description_error" style="color: red; font-size: 10px;"></span>
                             </td>
-                            <td>
+                          <%--  <td>
                                 <button class="btn cstm-btn bg-danger DeleteRow" type="button" onclick="removeRow_New(this);">
                                     <i class="entypo-trash"></i>
                                 </button>
-                            </td>
+                            </td>--%>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
       
-        <button class="btn cstm mt-20 addnewMedicalRow" id="clone"><i class="entypo-plus"></i>Add More</button>
+        <%--<button class="btn cstm mt-20 addnewMedicalRow" id="clone"><i class="entypo-plus"></i>Add More</button>--%>
         <%--        <button class="btn cstm mt-20"><i class="entypo-plus"></i>Add More</button>--%>
         <div class="text-right">
-            <button  type="button" class="btn submit">Submit</button>
+            <button  type="button" class="btn submitRequestView">Update</button>
         </div>
-                    </form>
+      </form>
     </div>
 </asp:Content>

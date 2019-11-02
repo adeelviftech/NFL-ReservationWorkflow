@@ -13,6 +13,12 @@ var VisitReqViewForm;
 var ApproveritemCollection;
 var SecretaryitemCollection;
 var AdminManageritemCollection;
+var PendingListItems;
+var PendingListItemsCount;
+var OpenListItemsCount;
+var ApprovedListItemsCount;
+var RejectListItemsCount;
+var ApprovtListItems;
 var lists;
 var ctx;
 var appCtxSite;
@@ -30,6 +36,7 @@ var siteUrl;
 var listCreationInformation;
 var listItem;
 var DetaillistItem;
+var DetailListForAccommodationRequest;
 var HistoryListItem;
 var HistoryItemsForReject;
 var UserBusniess;
@@ -38,6 +45,8 @@ var txtrcpt;
 var Name;
 var Age;
 var Relation;
+var CNIC;
+var NikahNama;
 var results = [];
 var BusniessHRApprover;
 var BusniessAdminManager;
@@ -69,7 +78,7 @@ var HomeView = "Home.aspx";
 var VisitRequestList = "Visit Request List";
 var VisitRequestFamilylist = "Visit Request Family Detail list";
 var AccommodationList = "Accommodation List";
-var AccommodationDetailList = "Accommodation Detail List";
+var AccommodationDetailList = "AccommodationDetailList";
 var CorporateEvent = "Corporate Event";
 var CorporateDetailList = "Corporate Detail List";
 var Users = "Users";
@@ -192,12 +201,17 @@ function getListItemFromHostWeb() {
     if (pagename == "VisitRequestView.aspx") {
         ctx.executeQueryAsync(GetVisitorDetailView, onFailed);
     }
+    if (pagename == "CorporateEventApproval.aspx") {
+        ctx.executeQueryAsync(GetCorporateApprovateDetailView, onFailed);
+    }
 }
 
 
 
 function GetBasicDetail() {
+
     debugger;
+    
     var loginanme = _spPageContextInfo.userLoginName.split("@")[0];
     list = lists.getByTitle(Users);
     var camlQuery = new SP.CamlQuery();
@@ -211,8 +225,13 @@ function GetBasicDetail() {
 "</Query></View>");
     GetUserInfo = list.getItems(camlQuery);
     ctx.load(GetUserInfo);
-    //ctx.executeQueryAsync(Function.createDelegate(this, this.GetUserInfos), Function.createDelegate(this, this.onFailedCallback));
-    ctx.executeQueryAsync(GetUserInfos, onFailedCallback);
+    if (pagename == "VisitRequest.aspx") {
+        ctx.executeQueryAsync(GetUserInfos, onFailedCallback);
+    }
+    if (pagename == "AccommodationRequests.aspx") {
+        ctx.executeQueryAsync(GetUserInfosForAcc, onFailedCallback);
+    }
+    
 
 }
 
@@ -238,6 +257,29 @@ function GetUserInfos() {
     }
     UnblockUI();
 }
+
+function GetUserInfosForAcc() {
+    debugger;
+    var enumerator = GetUserInfo.getEnumerator();
+    //Formulate HTML from the list items   
+    var MainResult = 'Items in the Divisions list: <br><br>';
+    //Loop through all the items   
+    while (enumerator.moveNext()) {
+        var listItem = enumerator.get_current();
+
+        $("#empidAcc").val(listItem.get_item("EmpID")).prop('readonly', true);
+        $("#divisionAcc").val(listItem.get_item("Division")).prop('readonly', true);
+        $("#empnameAcc").val(listItem.get_item("Ename")).prop('readonly', true);
+        $("#designationAcc").val(listItem.get_item("Designation_Name")).prop('readonly', true);
+        $("#deptAcc").val(listItem.get_item("Department")).prop('readonly', true);
+        $("#mobileAcc").val(listItem.get_item("Cell")).prop('readonly', true);
+        $("#costAcc").val(listItem.get_item("Cost_Center")).prop('readonly', true);
+        $("#gpsAcc").val(listItem.get_item("GPS")).prop('readonly', true);
+
+    }
+    UnblockUI();
+}
+
 function onFailedCallback(sender, args) {
     showStatusMsgPopup("3", args.get_message());
 }
@@ -301,8 +343,10 @@ function tblToJson(rows) {
         });
 
         $(e).find("input[type=file]").each(function (iii, eee) {
-            JsonElem[eee.classList[1]] = eee.files[0];
+            JsonElem[counter] = eee.files;
+            counter = counter + 1;
         });
+
         $(e).find('.MaxLength').each(function (j, k) {
             JsonElem[k.classList[0]] = $(k).html();
         });
@@ -356,6 +400,76 @@ function ValidateFamilyMemberInfo() {
     });
 }
 
+function ValidateFamilyMemberInfoAccommodation() {
+
+    $('.NameAcc').each(function (i, e) {
+        Name = $(e).val();
+        if (Name == '') {
+            $($('.Name_error_Acc')[i]).text('Required')
+        }
+        else {
+            $($('.Name_error_Acc')[i]).text('')
+        }
+    });
+
+    $('.AgeAcc').each(function (i, e) {
+        Age = $(e).val();
+        if (Age == '' || Age == '0') {
+            $($('.Age_error_Acc')[i]).text('Required')
+        }
+        else {
+            $($('.Age_error_Acc')[i]).text('')
+        }
+    });
+    $('.RelationAcc').each(function (i, e) {
+        Relation = $(e).val();
+        if (Relation == '') {
+            $($('.Relation_error_Acc')[i]).text('Required')
+        }
+        else {
+            $($('.Relation_error_Acc')[i]).text('')
+        }
+    });
+}
+
+function CheckImageAvailability() {
+    var status = true;
+    $('.customFileCNIC').each(function (i, e) {
+        if (e.files[i] == undefined) {
+            status = false;
+            $($('.CNICAttachment')[i]).text('Required');
+            return false;
+        } else {
+            $($('.CNICAttachment')[i]).text('')
+        }
+    });
+
+   
+    $('.customFileNikahNama').each(function (i, e) {
+        debugger;
+        $('.RelationAcc option:selected').each(function (i, ee) {
+            debugger;
+            var value = ee.value;
+            if (value == "Wife") {
+                if (e.files[i] == undefined) {
+                    status = false;
+                    $($('.NikahNamaAttachment')[i]).text('Required');
+                    return false;
+                } else {
+                    $($('.NikahNamaAttachment')[i]).text('')
+                }
+            }
+        });
+           
+       
+            
+        });
+
+    
+
+    return status;
+}
+
 function BindDatePicker() {
     $('.daterange-single').daterangepicker({
         singleDatePicker: true,
@@ -380,4 +494,69 @@ function convertDateTime(DateTime) {
         var strDate = DateTime.getDate() + "-" + (DateTime.getMonth() + 1) + "-" + DateTime.getFullYear();
         return strDate;
     }
+}
+
+function CreateGuid() {
+    function _p8(s) {
+        var p = (Math.random().toString(16) + "000000000").substr(2, 8);
+        return s ? "-" + p.substr(0, 4) + "-" + p.substr(4, 4) : p;
+    }
+    return _p8() + _p8(true) + _p8() + _p8(true);
+}
+
+
+function getFileBuffer(file) {
+    var deferred = $.Deferred();
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        deferred.resolve(e.target.result);
+    }
+    reader.onerror = function (e) {
+        deferred.reject(e.target.error);
+    }
+    reader.readAsArrayBuffer(file[0]);
+    return deferred.promise();
+}
+
+function uploadFile(listName, id, file, file_name) {
+    var deferred = $.Deferred();
+    if (file != undefined) {
+        var fileName = file[0].name;
+        getFileBuffer(file).then(
+            function (buffer) {
+                var bytes = new Uint8Array(buffer);
+                var binary = '';
+                for (var b = 0; b < bytes.length; b++) {
+                    binary += String.fromCharCode(bytes[b]);
+                }
+                var scriptbase = _spPageContextInfo.siteAbsoluteUrl + "/_layouts/15/";
+                console.log(' File size:' + bytes.length);
+                $.getScript(scriptbase + "SP.RequestExecutor.js", function () {
+                    var createitem = new SP.RequestExecutor(_spPageContextInfo.siteAbsoluteUrl);
+                    createitem.executeAsync({
+                        url: _spPageContextInfo.siteAbsoluteUrl + "/_api/web/lists/GetByTitle('" + listName + "')/items(" + id + ")/AttachmentFiles/add(FileName='" + file_name + "')",
+                        method: "POST",
+                        binaryStringRequestBody: true,
+                        body: binary,
+                        success: fsucc,
+                        error: ferr,
+                        state: "Update"
+                    });
+                    function fsucc(data) {
+                        console.log(data + ' uploaded successfully');
+                        deferred.resolve(data);
+                    }
+                    function ferr(data) {
+                        console.log(fileName + "not uploaded error");
+                        deferred.reject(data);
+                    }
+                });
+
+            },
+            function (err) {
+                deferred.reject(err);
+            }
+        );
+    }
+    return deferred.promise();
 }

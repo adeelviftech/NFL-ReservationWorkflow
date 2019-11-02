@@ -5,6 +5,7 @@
 
 <asp:Content ContentPlaceHolderID="PlaceHolderMainContent" runat="server">
     <div class="main-area-wrapper">
+        <form id="AccommodationRequestForm">
                 <div class="row cstm-align">
                     <div class="col-md-12">
                         <p>Home<span><i class="entypo-right-open-mini"></i></span>Accommodation Requests</p>
@@ -17,19 +18,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Employee ID</label>
-                                <input type="text" class="form-control" placeholder="Employee ID" id="empid" name="empid" />
+                                <input type="text" class="form-control" placeholder="Employee ID" id="empidAcc" name="empidAcc" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Name" id="empname" name="empname" />
+                                <input type="text" class="form-control" placeholder="Enter Name" id="empnameAcc" name="empnameAcc" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Division</label>
-                                <input type="text" class="form-control" placeholder="Enter Division" id="division" name="division" />
+                                <input type="text" class="form-control" placeholder="Enter Division" id="divisionAcc" name="divisionAcc" />
                             </div>
                         </div>
                     </div>
@@ -39,19 +40,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Designation</label>
-                                <input type="text" class="form-control" placeholder="Enter Designation" id="designation" name="designation" />
+                                <input type="text" class="form-control" placeholder="Enter Designation" id="designationAcc" name="designationAcc" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="sel1">Department</label>
-                                <input type="text" class="form-control" placeholder="Enter Department" id="dept" name="dept" />
+                                <input type="text" class="form-control" placeholder="Enter Department" id="deptAcc" name="deptAcc" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>GPS</label>
-                                <input type="text" class="form-control" placeholder="Enter GPS" id="gps" name="gps" />
+                                <input type="text" class="form-control" placeholder="Enter GPS" id="gpsAcc" name="gpsAcc" />
                             </div>
                         </div>
                     </div>
@@ -62,13 +63,13 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Mobile Number</label>
-                                <input type="text" class="form-control" placeholder="+92 340 1807773" id="mobile" name="mobile" />
+                                <input type="text" class="form-control" placeholder="+92 340 1807773" id="mobileAcc" name="mobileAcc" />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Cost Center Description</label>
-                                <input type="text" class="form-control" placeholder="ABC" id="cost" name="cost" />
+                                <input type="text" class="form-control" placeholder="ABC" id="costAcc" name="costAcc" />
                             </div>
                         </div>
                     </div>
@@ -105,56 +106,73 @@
                 </div>
 
                 <h1>Family Member Information</h1>
-                <div class="main-form">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Name" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Age</label>
-                                <input type="text" class="form-control" placeholder="Enter Age" />
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="sel1">Relation</label>
-                                <select class="form-control" id="sel1" placeholder="Select Relation">
-                                    <option>Sale</option>
-                                    <option>Accounts</option>
+        <div class="main-form">
+            <div class="table-responsive cstm-table">
+                <table class="table mbl_cstm_tbl_blck" id="AccommodationTable">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Relation</th>
+                            <th>CNIC</th>
+                            <th>Nikah Nama</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tr_AccommodationTable">
+                            <td>
+                                <input type="text" class="Name form-control NameAcc" placeholder="Enter Name" />
+                                <span id="NameerrorAcc" class="Name_error_Acc" style="color: red; font-size: 10px;"></span>
+                            </td>
+                            <td>
+                                <input type="number" class="Age form-control AgeAcc" placeholder="Enter Age" />
+                                <span id="AgeerrorAcc" class="Age_error_Acc" style="color: red; font-size: 10px;"></span>
+                            </td>
+                            <td>
+                                <select class="RelationAcc form-control relation" id="sel1">
+                                    <option>Brother</option>
+                                    <option>Sister</option>
+                                    <option>Wife</option>
                                 </select>
-                            </div>
-                        </div>
-                    </div>
+                                <span id="RelationerrorAcc" class="Relation_error_Acc" style="color: red; font-size: 10px;"></span>
 
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label>Scanned copy of Valid CNIC*</label>
-                            <form class="form cstm">
-                                <div class="file-upload-wrapper" data-text="Upload CNIC">
-                                    <input name="file-upload-field" type="file" class="file-upload-field" value="" />
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-4">
-                            <label>Scanned copy of Nikah Nama</label>
-                            <form class="form cstm">
-                                <div class="file-upload-wrapper" data-text="Upload Nikkah Nama">
-                                    <input name="file-upload-field" type="file" class="file-upload-field" value="" />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn cstm mt-20"><i class="entypo-plus"></i> Add More</button>
+                            </td>
+                            <td>
+
+                                <form class="form cstm">
+                                    <div class="file-upload-wrapper">
+                                        <input name="file-upload-field" type="file" id="CNIC" class="file-upload-field customFileCNIC" value="" />
+                                    </div>
+                                    
+                                </form>
+                                <span class="CNICAttachment" style="color: red; font-size: 10px;"></span>
+                            </td>
+                            <td>
+                                <form class="form cstm">
+                                    <div class="file-upload-wrapper">
+                                        <input name="file-upload-field" type="file" id="NikahNama" class="file-upload-field customFileNikahNama" value="" />
+                                    </div>
+                                </form>
+                                <span class="NikahNamaAttachment" style="color: red; font-size: 10px;"></span>
+                            </td>
+                            <td>
+                                <button class="btn cstm-btn bg-danger DeleteRow" type="button" onclick="removeRow_New(this);">
+                                    <i class="entypo-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+                <button class="btn cstm mt-20 addnewAccommodationRow"><i class="entypo-plus"></i> Add More</button>
                 <div class="text-right">
-                    <button class="btn submit">Submit</button>
+                    <button class="btn submitAccommodation">Submit</button>
                 </div>
+            </form>
                 <div class="trems-conditions">
                     <h3>Terms & Conditions</h3>
                     <ul>

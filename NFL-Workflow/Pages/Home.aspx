@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="Open">
-                                            <h1 class="openCount">45</h1>
+                                            <h1 class="openCount"></h1>
                                             <h5>Open Requests </h5>
                                         </div>
                                     </div>
@@ -157,16 +157,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       <%-- <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Visit_Requests"></i></span></a></td>
-                                        </tr>--%>
                                     </tbody>
                                 </table>
                             </div>
@@ -233,7 +223,7 @@
                         </div>
                         <div class="tab-pane fade" id="contact-just" role="tabpanel" aria-labelledby="contact-tab-just">
                             <div class="table-responsive">
-                                <table class="table cstm-area mt-20">
+                                <table class="table cstm-area mt-20" id="table_Corporate">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.NO.</th>
@@ -246,46 +236,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Corporate_Event"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Corporate_Event"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Corporate_Event"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Corporate_Event"></i></a></td>
-                                        </tr>
+                                     
                                     </tbody>
                                 </table>
                             </div>
