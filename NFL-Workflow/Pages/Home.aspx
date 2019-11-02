@@ -164,7 +164,7 @@
                         </div>
                         <div class="tab-pane fade" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
                             <div class="table-responsive">
-                                <table class="table cstm-area mt-20">
+                                <table class="table cstm-area mt-20" id="table_Accommodation">
                                     <thead>
                                         <tr>
                                             <th scope="col">S.NO.</th>
@@ -177,46 +177,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Accommodation_Requests"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Accommodation_Requests"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Accommodation_Requests"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>Mohammad Salman</td>
-                                            <td>Sales</td>
-                                            <td>@CR-001</td>
-                                            <td>28-08-2019</td>
-                                            <td>Pending</td>
-                                            <td><a href="#"><i class="glyphicon glyphicon-eye-open" data-toggle="modal"
-                                                        data-target="#Accommodation_Requests"></i></a></td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>

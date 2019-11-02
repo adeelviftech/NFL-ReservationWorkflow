@@ -9,6 +9,8 @@
     <File Path="Pages\VisitRequestApproval.aspx" Url="Pages/VisitRequestApproval.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\VisitRequestView.aspx" Url="Pages/VisitRequestView.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\CorporateEventApproval.aspx" Url="Pages/CorporateEventApproval.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\AccommodationRequestsView.aspx" Url="Pages/AccommodationRequestsView.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\AccommodationRequestsApproval.aspx" Url="Pages/AccommodationRequestsApproval.aspx" ReplaceContent="TRUE" />
   </Module>
   <Module Name="MasterPage">
     <File Path="MasterPage\NFL_Master.master" Url="MasterPage/NFL_Master.master" ReplaceContent="TRUE" />

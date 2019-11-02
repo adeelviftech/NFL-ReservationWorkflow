@@ -5,7 +5,6 @@
 
 <asp:Content ContentPlaceHolderID="PlaceHolderMainContent" runat="server">
     <div class="main-area-wrapper">
-        <form id="AccommodationRequestForm">
                 <div class="row cstm-align">
                     <div class="col-md-12">
                         <p>Home<span><i class="entypo-right-open-mini"></i></span>Accommodation Requests</p>
@@ -13,6 +12,9 @@
                 </div>
 
                 <h1>Accommodation Requests</h1>
+        <form id="ApprovalFormAcc">
+
+      
                 <div class="main-form">
                     <div class="row">
                         <div class="col-md-4">
@@ -77,12 +79,13 @@
 
                 <h1>Request Information</h1>
                 <div class="main-form">
-                    <div class="row">
+                    <form id="viewAccForm">
+                        <div class="row">
                         <div class="col-md-4">
                             <div class="form-group"> <label class="control-label">Visit Date</label>
                                 <div class="">
                                     <div class="input-groups">
-                                    <input placeholder="21-08-19" class="form-control daterange-single"
+                                    <input type="text" placeholder="21-08-19" class="form-control daterange-single"
                                          id="VisitDateAcc" name="VisitDateAcc" />
                                     <i class="entypo-calendar"></i>
                                 </div>
@@ -102,13 +105,15 @@
                             </div>
                         </div>
                     </div>
+                    </form>
+                    
 
                 </div>
 
                 <h1>Family Member Information</h1>
-        <div class="main-form">
+                <div class="main-form">
             <div class="table-responsive cstm-table">
-                <table class="table mbl_cstm_tbl_blck" id="AccommodationTable">
+                <table class="table mbl_cstm_tbl_blck" id="AccommodationTableView">
                     <thead class="bg-primary">
                         <tr>
                             <th>Name</th>
@@ -116,63 +121,36 @@
                             <th>Relation</th>
                             <th>CNIC</th>
                             <th>Nikah Nama</th>
-                            <th>Action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="tr_AccommodationTable">
-                            <td>
-                                <input type="text" class="Name form-control NameAcc" placeholder="Enter Name" />
-                                <span id="NameerrorAcc" class="Name_error_Acc" style="color: red; font-size: 10px;"></span>
-                            </td>
-                            <td>
-                                <input type="number" class="Age form-control AgeAcc" placeholder="Enter Age" />
-                                <span id="AgeerrorAcc" class="Age_error_Acc" style="color: red; font-size: 10px;"></span>
-                            </td>
-                            <td>
-                                <select class="RelationAcc form-control relation" id="sel1">
-                                    <option>Brother</option>
-                                    <option>Sister</option>
-                                    <option>Wife</option>
-                                </select>
-                                <span id="RelationerrorAcc" class="Relation_error_Acc" style="color: red; font-size: 10px;"></span>
-
-                            </td>
-                            <td>
-
-                                <form class="form cstm">
-                                    <div class="file-upload-wrapper">
-                                        <input name="file-upload-field" type="file" id="CNIC" class="file-upload-field customFileCNIC" value="" />
-                                    </div>
-                                    
-                                </form>
-                                <span class="CNICAttachment" style="color: red; font-size: 10px;"></span>
-                            </td>
-                            <td>
-                                <form class="form cstm">
-                                    <div class="file-upload-wrapper">
-                                        <input name="file-upload-field" type="file" id="NikahNama" class="file-upload-field customFileNikahNama" value="" />
-                                    </div>
-                                </form>
-                                <span class="NikahNamaAttachment" style="color: red; font-size: 10px;"></span>
-                            </td>
-                            <td>
-                                <button class="btn cstm-btn bg-danger DeleteRow" type="button" onclick="removeRow_New(this);">
-                                    <i class="entypo-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
+                    
+                        <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Comments</label>
+                                <textarea cols="" class="form-control" rows="5" id="commentboxAcc" name="commentboxAcc"></textarea>
+                            </div>
+                            <span class="CommentBOX" style="color: red; font-size: 10px;"></span>
+                        </div>
 
+                    </div>
+                   
+                    
 
         </div>
-                <button class="btn cstm mt-20 addnewAccommodationRow"><i class="entypo-plus"></i> Add More</button>
-                <div class="text-right">
-                    <button class="btn submitAccommodation">Submit</button>
-                </div>
-            </form>
+               
+                <div class="text-left">
+                <button type="button" class="btn submitapprovalAcc">Approve</button>
+                <button type="button" class="btn rejectAcc">Reject</button>
+                <button type="button" class="btn sendbackAcc">Send Back To Initiator</button>
+            </div>
+          </form>
                 <div class="trems-conditions">
                     <h3>Terms & Conditions</h3>
                     <ul>

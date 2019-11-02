@@ -86,7 +86,7 @@
                             <label class="control-label">Visit Date</label>
                             <div class="">
                                 <div class="input-groups">
-                                    <input placeholder="21-08-19" class="form-control daterange-single" id="VisitDate" name="VisitDate" />
+                                    <input type="text" placeholder="21-08-19" class="form-control daterange-single" id="VisitDate" name="VisitDate" />
                                     <i class="entypo-calendar"></i>
                                 </div>
                             </div>

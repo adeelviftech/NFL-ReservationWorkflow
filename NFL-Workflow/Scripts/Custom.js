@@ -9,7 +9,9 @@ var itemCollection;
 var itemCollectionFamilyMemberList;
 var itemCollectionPrevioususer;
 var VisitorID;
+var AccommodationID;
 var VisitReqViewForm;
+var AccommodationRequestViewForm;
 var ApproveritemCollection;
 var SecretaryitemCollection;
 var AdminManageritemCollection;
@@ -25,6 +27,10 @@ var appCtxSite;
 var listEnumerator;
 var currentlist;
 var list;
+//new var
+var NameofList;
+var ListName;
+//end
 var GetVisitReqRecord;
 var GetUserInfo;
 var ExpenseTypeIDlist;
@@ -37,6 +43,7 @@ var listCreationInformation;
 var listItem;
 var DetaillistItem;
 var DetailListForAccommodationRequest;
+var AccommodationListForDataGet;
 var HistoryListItem;
 var HistoryItemsForReject;
 var UserBusniess;
@@ -83,8 +90,11 @@ var CorporateEvent = "Corporate Event";
 var CorporateDetailList = "Corporate Detail List";
 var Users = "Users";
 var VisitRequestHistory = "Visit Request History";
+var AccommodationRequestHistoryList = "AccommodationRequestHistoryList";
 var Origin = location.origin;
 var PathName = "/sites/vfdev/NFL-Workflow/Pages/";
+var MainURL = "https://nflpk.sharepoint.com/sites/vfdev/"; //document.URL.split('NFL-Workflow')[0];
+var SubURL = "Lists/Accommodation%20Detail%20List/Attachments/";
 var URL_Attr = "?" + document.URL.split("?")[1].split("&")[0] + "&" +
     document.URL.split("?")[1].split("&")[1] + "&" +
     document.URL.split("?")[1].split("&")[2] + "&" +
@@ -188,19 +198,28 @@ function getListItemFromHostWeb() {
 
     ctx.load(lists);
     context.load(user);
+    if (pagename == "VisitRequest.aspx") {
+        ctx.executeQueryAsync(GetBasicDetail, onFailedCallback);
+    }
     if (pagename == "VisitRequestApproval.aspx") {
         ctx.executeQueryAsync(GetVisitorDetail, OnGetListItemFailure);
         ctx.executeQueryAsync(BindEmployeeDropDown, OnGetListItemFailure);
     }
-    if (pagename == "VisitRequest.aspx") {
-        ctx.executeQueryAsync(GetBasicDetail,onFailedCallback);
-    }
-    if (pagename == "AccommodationRequests.aspx") {
-        ctx.executeQueryAsync(GetBasicDetail, onFailedCallback);
-    }
     if (pagename == "VisitRequestView.aspx") {
         ctx.executeQueryAsync(GetVisitorDetailView, onFailed);
     }
+   
+    if (pagename == "AccommodationRequests.aspx") {
+        ctx.executeQueryAsync(GetBasicDetail, onFailedCallback);
+    }
+
+    if (pagename == "AccommodationRequestsView.aspx") {
+        ctx.executeQueryAsync(GetAccommodationViewGetAccommodationView, onFailedCallback);
+    }
+    if (pagename == "AccommodationRequestsApproval.aspx") {
+        ctx.executeQueryAsync(GetAccommodationApprovalView, onFailedCallback);
+    }
+   
     if (pagename == "CorporateEventApproval.aspx") {
         ctx.executeQueryAsync(GetCorporateApprovateDetailView, onFailed);
     }
@@ -435,34 +454,34 @@ function ValidateFamilyMemberInfoAccommodation() {
 function CheckImageAvailability() {
     var status = true;
     $('.customFileCNIC').each(function (i, e) {
-        if (e.files[i] == undefined) {
+        if (e.files[0] == undefined) {
             status = false;
             $($('.CNICAttachment')[i]).text('Required');
-            return false;
+            
         } else {
             $($('.CNICAttachment')[i]).text('')
         }
+        
     });
 
    
     $('.customFileNikahNama').each(function (i, e) {
         debugger;
-        $('.RelationAcc option:selected').each(function (i, ee) {
+        var SelectedValue = $(this).closest('tr').find('td:eq(2) select').val();
+        if (SelectedValue == "Wife") {
             debugger;
-            var value = ee.value;
-            if (value == "Wife") {
-                if (e.files[i] == undefined) {
-                    status = false;
-                    $($('.NikahNamaAttachment')[i]).text('Required');
-                    return false;
-                } else {
-                    $($('.NikahNamaAttachment')[i]).text('')
-                }
+
+            if (e.files[0] == undefined) {
+                status = false;
+                $($('.NikahNamaAttachment')[i]).text('Required');
+
+            } else {
+                $($('.NikahNamaAttachment')[i]).text('')
             }
-        });
-           
-       
-            
+
+        }
+          
+
         });
 
     
